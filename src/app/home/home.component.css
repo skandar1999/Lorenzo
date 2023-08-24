@@ -1,0 +1,126 @@
+/* Add this CSS in your stylesheet */
+.product-card {
+    position: relative;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.description-hover {
+    opacity: 0;
+    transition: opacity 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 20px;
+    pointer-events: none; /* Add this line to prevent hover from affecting text */
+}
+
+.product-card:hover .description-hover {
+    opacity: 1;
+}
+
+
+/* Add this CSS in your stylesheet */
+.btn-dark {
+    color: white;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-dark:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Add this CSS in your stylesheet */
+.btn-dark {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-dark:hover {
+    transform: translateY(-3px);
+}
+
+
+
+/* Add this CSS in your stylesheet */
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.style-card {
+    background-color: transparent;
+    border: none;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    border: 0.5px solid transparent; /* Add a border for spacing */
+    height: 100%; /* Set a fixed height for the card */
+    position: relative; /* Set the position to enable text overlay */
+}
+
+.image-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    border: 0.5px solid transparent; /* Add a border for spacing */
+}
+
+.style-name {
+    position: absolute; /* Position the text absolutely over the image */
+    bottom: 0; /* Position the text at the bottom */
+    left: 33%; /* Move the text to the horizontal center */
+    transform: translateX(-50%); /* Center the text horizontally */
+    font-size: 2.3rem;
+    color: white; /* Set text color to white */
+}
+
+.style-text {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .style-card {
+        margin-bottom: 1rem;
+    }
+
+    .style-name {
+        font-size: 3rem;
+    }
+}
+
+
+

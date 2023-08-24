@@ -1,0 +1,44 @@
+<div class="home-content" *ngIf="product">
+    <img class="home-image" [src]="getProductImageUrl(product.image)" alt="">
+    <div class="home-details">
+        <h1 class="home-title">{{ product.name }}</h1>
+        <h2 class="home-subtitle">Ref: {{ product._id }}</h2>
+        <p class="home-description">{{ product.description }}</p>
+        <div class="home-button-container">
+            <a class="home-button" routerLink="/paniershop/confirm">
+                <i class="fas fa-shopping-cart mr-2"></i> Confirm Purchase
+            </a>
+        </div>
+        <br>
+        <h2 class="home-subtitle">Payment will be upon delivery</h2>
+    </div>
+</div>
+
+
+
+<section class="">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="">
+                <h1 class="h4" style="font-weight: bold;" >Recommended for you</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-3 mb-7" *ngFor="let product of allproducts.slice(0, 5)">
+                <div class="card product-card no-border">
+                    <img [src]="getProductImageUrl(product.image)" alt="Product Image">
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li class="text-muted text-right">{{ product.prix }}</li>
+                        </ul>
+                        <h6 class="text-decoration-none text-dark product-name">{{ product.name }}</h6>
+                        <div class="description-hover">
+                            <p class="card-text">{{ product.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>

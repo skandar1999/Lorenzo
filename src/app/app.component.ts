@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularShop';
+
+constructor(private authService: AuthService) {}
+
+ngOnInit() {
+  // Initialize AuthService and load token on app startup
+  this.authService.loadToken();
+}
 }

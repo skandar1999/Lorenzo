@@ -1,0 +1,30 @@
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Shop</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-3 mb-4" *ngFor="let product of allproducts" >
+                <div class="card h-100 product-card">
+                    <img [src]="getProductImageUrl(product.image)" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                            <li class="text-muted text-right">{{ product.prix }}</li>
+                        </ul>
+                        <h4 class="text-decoration-none text-dark product-name">{{ product.name }}</h4>
+                        <div class="description-hover">
+                            <p class="card-text">{{ product.description }}</p>
+                        </div>
+                        <div class="shop-hover">
+                            <a class="btn btn-dark mt-3" (click)="onProductSelected(product)">Shop Now</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

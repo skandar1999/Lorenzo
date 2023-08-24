@@ -1,0 +1,6 @@
+/* Add this CSS in your stylesheet */
+.sponsor-img {
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 70px; /* Adjust the maximum width of sponsor images */
+}

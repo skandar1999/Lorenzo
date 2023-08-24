@@ -1,0 +1,82 @@
+/* Your existing CSS styles */
+body {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+  .login-form {
+    padding: 40px;
+  }
+
+  .form-outline {
+    position: relative;
+  }
+
+  .form-outline input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .form-outline label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #6c757d;
+  }
+
+  .form-check {
+    font-size: 14px;
+  }
+
+
+  .alert {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .alert i {
+    margin-right: 0.5rem;
+  }
+  
+  .alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  
+  .alert-success {
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .alert-danger {
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  

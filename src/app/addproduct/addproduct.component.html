@@ -1,0 +1,95 @@
+<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://static.vecteezy.com/system/resources/previews/019/489/387/non_2x/3d-blue-geometric-abstract-background-overlap-layer-on-dark-space-with-diagonal-lines-decoration-modern-graphic-design-element-striped-style-for-banner-flyer-card-brochure-cover-or-landing-page-vector.jpg');
+          height: 150px;
+          "></div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Add Product</h2>
+            <form (ngSubmit)="onSubmit()">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example1">Product name</label>
+
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Product price</label>
+
+                    <input type="text" class="form-control" id="prix" name="prix" [(ngModel)]="product.prix" required>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example2">Product description</label>
+
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="product.description" required>
+              </div>
+  
+              <!-- categorie input -->
+              <div class="form-outline mb-4">
+
+              <label class="form-label" for="categorie">Product category</label>
+
+              <select class="form-control custom-select" id="categorie" name="categorie" [(ngModel)]="product.categorie" required>
+                <option value="tshirt">T-Shirt</option>
+                <option value="jeans">Jeans</option>
+                <option value="chemise">Chemise</option>
+                <option value="shoes">Shoes</option>
+                <option value="POLO">POLO</option>
+
+               
+                </select>
+            </div>
+            
+    
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example2">Product Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" (change)="onFileChange($event)" required>
+              </div>
+  
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-dark">
+                confirm add   
+            </button><br>
+
+            <button routerLink="/listeallproducts" class="btn btn-dark" style="margin-top:20px;">
+              Liste product </button>
+            
+
+  
+                <div class="alert alert-success alert-dismissible fade show" *ngIf="successMessage">
+                    <i class="fas fa-check-circle"></i>{{ successMessage }}
+                </div>
+                    
+                <div class="alert alert-danger alert-dismissible fade show" *ngIf="errorMessage">
+                    <i class="fas fa-check-circle"></i> {{ errorMessage }}             
+                </div>
+                   
+                   
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->

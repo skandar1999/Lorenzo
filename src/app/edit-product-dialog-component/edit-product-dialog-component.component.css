@@ -1,0 +1,56 @@
+/* edit-product-dialog-component.component.css */
+
+.modal-content {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 0;
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+    margin: 0;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 15px 20px;
+    text-align: right;
+  }
+  
+  .modal-footer button {
+    margin-left: 10px;
+  }
+  
+  .btn-secondary {
+    background-color: #e9ecef;
+    color: #343a40;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  

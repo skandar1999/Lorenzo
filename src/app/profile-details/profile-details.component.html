@@ -1,0 +1,190 @@
+
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-5 col-sm-12 col-lg-3 user-section">
+    
+  
+          <!-- User Image -->
+          <div class="content text-center">
+            <div class="image-section">
+              <span class="icon">
+                <img [src]="getUserImageUrl()" alt="User Image">
+                <label for="image-input" class="file-input-label">
+                  <i class="fas fa-image x2" style="font-size: 24px; padding-right: 0.5rem;"></i>Edit Photo<br>
+                </label>
+                <div class="update-image-container">
+                  <form enctype="multipart/form-data">
+                    <div class="file-input-wrapper">
+                      <input type="file" id="image-input" name="image" style="display: none;">
+                    </div>
+                  </form>
+                </div>
+              </span>
+            </div>
+        </div>
+        <a
+        class="logout-link"
+        href="/login"
+        (click)="onLogout()"
+        type="submit" ><i class="fas fa-sign-out-alt"></i> Logout </a>
+        </div>
+      
+        <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+          <div class="tab-pane fade show active" id="settings" role="tabpanel">
+            <div class="acccount-settings" >
+              
+              <h4 class="mb-4">These details appear partially on your profile.
+              </h4>
+
+
+              
+
+              
+              <form >
+  
+                <div class="form-group mb-4">
+                  <label>Email</label>
+                  <input
+                  [readonly]="true"
+                  type="text"
+                  class="form-control"
+                  value={{user.email}}
+                  name="email"
+  
+  
+                  />
+                </div>
+  
+                <div class="form-group mb-4"  >
+                  <label>First Name</label>
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    class="form-control"
+                    name="username"
+                    value={{user.name}}
+  
+                  /> 
+                </div>
+
+                <div class="form-group mb-4"  >
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      autocomplete="off"
+                      class="form-control"
+                      name="username"
+                      value={{user.lastname}}
+    
+                    /> 
+                  </div>
+  
+                <div class="form-group mb-4" [ngClass]="{'text-danger': this.errorMessage}">
+                  <label>Mobile</label>
+                  <input
+                  [ngClass]="{'text-danger': this.errorMessage}"
+                  autocomplete="off"
+                    type="text"
+                    class="form-control"
+                    name="mobile"
+                    value={{user.phone}}
+                    />
+                </div>
+              </form> 
+  
+            
+  
+              <form class="mt-5">
+                <h4>Password Change</h4>
+  
+
+                <div class="form-group" [ngClass]="{'text-danger': errorMessagepw}">
+                  <label for="password">Current Password</label>
+                  <div class="input-group">
+                    <input type="{{ hidePassword1 ? 'password' : 'text' }}"
+                           [ngClass]="{'text-danger': errorMessagepw}"
+                           autocomplete="off"
+                           class="form-control"
+                           name="PasswordActuelle"
+                           [(ngModel)]="PasswordActuelle">
+                    <div class="input-group-append">
+                      <span class="input-group-text toggle-password" (click)="togglePassword1()" style="cursor: pointer;">
+                        <i class="fa" [ngClass]="hidePassword1 ? 'fa-eye-slash' : 'fa-eye'"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                
+  
+  
+  
+                <div class="form-group" [ngClass]="{'text-danger': errorMessagepw}">
+                  <label for="password">New Password</label>
+                  <div class="input-group">
+                    <input type="{{ hidePassword2 ? 'password' : 'text' }}"
+                           [ngClass]="{'text-danger': errorMessagepw}"
+                           autocomplete="off"
+                           class="form-control"
+                           name="NewPassword">
+                    <div class="input-group-append">
+                      <span class="input-group-text toggle-password" (click)="togglePassword2()" style="cursor: pointer;">
+                        <i class="fa" [ngClass]="hidePassword2 ? 'fa-eye-slash' : 'fa-eye'"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+  
+  
+              
+                <div class="form-group" [ngClass]="{'text-danger': errorMessagepw}">
+                  <label for="password">Confirm Password</label>
+                  <div class="input-group">
+                    <input type="{{ hidePassword3 ? 'password' : 'text' }}"
+                           [ngClass]="{'text-danger': errorMessagepw}"
+                           autocomplete="off"
+                           class="form-control"
+                         name="confirmPassword">
+                    <div class="input-group-append">
+                      <span class="input-group-text toggle-password" (click)="togglePassword3()" style="cursor: pointer;">
+                        <i class="fa" [ngClass]="hidePassword3 ? 'fa-eye-slash' : 'fa-eye'"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="alert alert-success alert-dismissible fade show" *ngIf="updateSuccess" [class.show]="updateSuccess" role="alert">
+                  <span class="fas fa-check-circle icon"></span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span class="text">Your information has been successfully updated!
+                </span>
+                </div>
+                
+                
+                 
+                   
+                  <div *ngIf="errorMessage" >
+                    <span class="notmatch">{{ errorMessage }}</span>
+                  </div>
+  
+                  <div *ngIf="errorMessagepw" >
+                    <span class="notmatch">{{ errorMessagepw }}</span>
+                  </div>
+  
+  
+                  <div *ngIf="not">
+                    <span class="notmatch">Veuillez verifier votre nouveaux Mot de passe.</span>
+                  </div>  
+                  <button type="submit" class="btn btn-success" >Save changes</button><br />
+               </form>
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  
