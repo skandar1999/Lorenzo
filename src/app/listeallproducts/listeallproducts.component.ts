@@ -32,20 +32,21 @@ export class ListeallproductsComponent implements OnInit {
 
   }
 
-  openEditDialog(product: any): void {
-    this.bsModalRef = this.modalService.show(EditProductDialogComponentComponent, {
-      initialState: {
-        productData: product // Pass the selected product's data
-      },
-      class: 'modal-dialog-centered' // Optional: You can add classes for styling
-    });
-
-    this.bsModalRef.content?.onClose.subscribe((result: any) => {
-      if (result) {
-        // Handle any actions after the dialog is closed (if needed)
-      }
+  
+    openEditDialog(product: any): void {
+      console.log('Opening dialog with product:', product);
+      this.bsModalRef = this.modalService.show(EditProductDialogComponentComponent, {
+        initialState: {
+          productData: { ...product } // Make sure "product" has a valid "id" property
+        },
+        class: 'modal-dialog-centered'
+      });
+  
+    this.bsModalRef.content?.dialogClosed.subscribe((updatedProduct: any) => {
+      console.log('Dialog closed with updated product:', updatedProduct);
     });
   }
+  
   
 onDeletee(product: any): void {
   this.bsModalRef = this.modalService.show(SupprimeProductDialogComponentComponent, {

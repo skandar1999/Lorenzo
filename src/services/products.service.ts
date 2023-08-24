@@ -35,8 +35,10 @@ export class ProductsService {
   }
   
 
+
+
   updateProduct(productId: string, updatedProduct: any): Observable<any> {
-    const url = `${this.baseUrl}/updateproduct/${productId}`; // Use the correct product ID
+    const url = `${this.baseUrl}/updateproduct/${productId}`;
     return this.http.put(url, updatedProduct);
   }
   

@@ -18,7 +18,7 @@ export class ProductshopComponent implements OnInit {
       this.route.params.subscribe(params => {
         const productId = params['id'];
         this.getProductDetails(productId);
-        this. getFiles() 
+        this. getProds() 
       });
     }
   
@@ -38,7 +38,7 @@ export class ProductshopComponent implements OnInit {
       return `http://localhost:3000/uploads/${image}`; // Adjust the URL as needed
     }
 
-    getFiles() {
+    getProds() {
       this.productService.getProducts().subscribe(
         prods => {
           console.log(prods);

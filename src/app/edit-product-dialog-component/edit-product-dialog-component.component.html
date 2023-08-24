@@ -1,9 +1,27 @@
-<div class="modal-header">
-    <h4 class="modal-title">Edit product {{productName}}</h4>
+<div class="modal-body">
+  <input type="text" [(ngModel)]="productData.name" class="form-control" placeholder="Product Name">
+  <input type="text" [(ngModel)]="productData.prix" class="form-control" placeholder="Price">
+  <textarea [(ngModel)]="productData.description" class="form-control" placeholder="Description"></textarea>
+  <select [(ngModel)]="productData.categorie" class="form-control" placeholder="Select Category">
+     <option value="tshirt">T-Shirt</option>
+     <option value="jeans">Jeans</option>
+     <option value="chemise">Chemise</option>
+     <option value="shoes">Shoes</option>
+     <option value="POLO">POLO</option>
+     <!-- Add more categories as needed -->
+  </select>
+  <div class="modal-body">
+    <label for="imageInput">Current Image:</label>
+    <img [src]="getProductImageUrl(productData.image)" alt="Product Image" class="current-image" style="max-width: 30%; height: auto;">
   </div>
-  
-  <div class="modal-footer">
-    <button class="btn btn-secondary" (click)="cancelChanges()">Cancel</button>
-    <button class="btn btn-danger" (click)="confirmChanges()">Delete</button>
-  </div>
-  
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cancel</button>
+  <button type="button" class="btn btn-dark" (click)="saveChanges()">Save Changes</button>
+</div>
+
+<div class="alert alert-success alert-dismissible fade show" *ngIf="successMessage">
+  <i class="fas fa-check-circle"></i>
+  {{ successMessage }}
+</div>
