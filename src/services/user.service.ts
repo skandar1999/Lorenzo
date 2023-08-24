@@ -32,4 +32,11 @@ export class UserService {
     const url = `${this.baseUrl}/userdetailsemail/${email}`;
     return this.http.get<User>(url);
   }
+
+
+  PasswordReset(email: string): Observable<any> {
+    const url = `${this.baseUrl}/reset-password`;
+    const data = { email };
+    return this.http.post(url, data);
+  }
 }
