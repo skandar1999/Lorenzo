@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
+import { Product } from 'src/app/footer/models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,18 @@ export class ProductsService {
     return this.http.get<any>(`${this.baseUrl}/getallproduct`);
   }
 
+
+  getPOLO(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getpoloproducts`);
+  }
+
+  getCHEMISE(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getchemiseproducts`);
+  }
+
+  getTSHIRT(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-shirt-products`);
+  }
 
   getProductById(productId: string): Observable<any> {
     const url = `${this.baseUrl}/getProductById/${productId}`; // Adjust the endpoint URL
@@ -42,5 +55,7 @@ export class ProductsService {
     return this.http.put(url, updatedProduct);
   }
   
+ 
+
 
 }

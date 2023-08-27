@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/services/products.service';
+import { Product } from '../footer/models/product';
+
 
 @Component({
   selector: 'app-productshop',
@@ -49,6 +51,10 @@ export class ProductshopComponent implements OnInit {
         }
       );
     }
+
+
+   
+
   
     
   }

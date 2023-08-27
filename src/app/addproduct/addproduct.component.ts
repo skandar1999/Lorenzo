@@ -21,30 +21,32 @@ export class AddproductComponent implements OnInit {
     if (!this.selectedFile) {
       return;
     }
-
+  
     const formData = new FormData();
     formData.append('name', this.product.name);
     formData.append('prix', this.product.prix);
     formData.append('description', this.product.description);
     formData.append('categorie', this.product.categorie);
     formData.append('image', this.selectedFile);
-
+  
     this.productService.addProduct(formData)
       .subscribe(
         (response) => {
           console.log('Product added successfully:', response);
           this.successMessage = 'Product added successfully';
-
-          // Handle success, e.g., show a success message or navigate to another page
+  
+          // Reload the page after 4 seconds
+          setTimeout(() => {
+            window.location.reload();
+          }, 4000);
         },
         (error) => {
           console.error('Error adding product:', error);
           this.errorMessage = 'Error adding product';
-
-          // Handle error, e.g., display an error message
         }
       );
   }
+  
 
   onFileChange(event: any): void {
     this.selectedFile = event.target.files[0];

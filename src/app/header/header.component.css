@@ -1,13 +1,19 @@
 /* Custom Navbar Styling */
 .navbar {
   background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 3px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+  padding: 9px 0;
 }
+
 
 .navbar-brand img {
   width: 120px;
   height: auto;
+  margin-left: 13px;
+}
+
+.navbar-brand {
+  padding-left: 15px;
 }
 
 .navbar-nav {
@@ -15,19 +21,44 @@
 }
 
 .navbar-nav .nav-item {
-  margin: 0 15px;
-  font-size: 18px;
+  margin: 0 5px;
+  font-size: 16px;
   list-style: none;
 }
 
 .navbar-nav .nav-link {
-  font-weight: bold;
   text-decoration: none;
-  color: #333;
-  padding: 10px 15px;
+  color: black;
+  padding: 10px 5px;
   transition: color 0.3s ease-in-out;
   position: relative;
+  border-bottom: none; /* Remove underline */
 }
+
+
+
+.navbar-nav.me-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Style for right links */
+.navbar-nav.m-auto {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav.m-auto .nav-item {
+  margin: 0 10px;
+}
+
+.navbar-nav.m-auto .nav-link {
+  color: black;
+  padding: 10px 0;
+  transition: color 0.3s ease-in-out;
+  border-bottom: none; /* Remove underline */
+}
+
 
 .navbar-nav .nav-link::before {
   content: "";
@@ -42,18 +73,11 @@
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #08441a;
-}
-
 .navbar-nav .nav-link:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(0.5);
   background-color: #2a2a2b;
+  
 }
-
-
-
-
 
 /* Mobile Responsiveness */
 @media (max-width: 991.98px) {
@@ -73,11 +97,50 @@
   }
 }
 
-
 .user-image {
   width: 30px;
   height: 30px;
-  margin-right: 0rem;
   border-radius: 50%;
-  object-fit: cover;
 }
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-email {
+  text-decoration: none;
+  color: #777;
+}
+
+
+
+
+/* Modern Search Bar */
+.search-bar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 8px;
+  padding: 5px 10px;
+  outline: none;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 5px;
+}
+
+/* ... (existing styles) ... */

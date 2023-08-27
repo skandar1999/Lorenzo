@@ -1,77 +1,4 @@
-/* Add this CSS in your stylesheet */
-.product-card {
-    position: relative;
-    border: none;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s;
-}
-
-.product-card:hover img {
-    transform: scale(1.05);
-}
-
-.description-hover {
-    opacity: 0;
-    transition: opacity 0.3s;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 20px;
-    pointer-events: none; /* Add this line to prevent hover from affecting text */
-}
-
-.product-card:hover .description-hover {
-    opacity: 1;
-}
-
-
-/* Add this CSS in your stylesheet */
-.btn-dark {
-    color: white;
-    padding: 20px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-dark:hover {
-    transform: translateY(-3px);
-}
-
-
-/* Add this CSS in your stylesheet */
-.btn-dark {
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-dark:hover {
-    transform: translateY(-3px);
-}
-
-
-
-/* Add this CSS in your stylesheet */
 .section-header {
     margin-bottom: 3rem;
 }
@@ -109,7 +36,7 @@
 }
 
 .style-text {
-    margin: 0;
+    margin: 2;
 }
 
 @media (max-width: 768px) {
@@ -122,5 +49,60 @@
     }
 }
 
+
+
+
+
+
+
+#Bestchoice{
+    font-family: 'orpheuspro', serif;
+    font-size: calc(16px + 1.65vw);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 54px;
+}
+
+
+
+#Lorenzo{
+    font-family: 'orpheuspro', serif;
+    font-size: calc(16px + 1.65vw);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 54px;
+}
+
+#Lorenzo2{
+    font-family: 'orpheuspro', serif;
+    font-size: calc(12px + 1.05vw);
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 54px;
+}
+
+#paragphamehome{
+    font-family: 'orpheuspro', serif;
+    font-size: 15x;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 54px;
+}
+
+
+.product-image {
+    height: 100%; /* Ensure the image takes up the full width of the container */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+
+
+.banner {
+    height: 380px; /* Adjust the height as needed */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), var(--image-url); /* Apply gradient overlay and background image */
+    background-position: left; /* Image will appear from left to right */
+    background-size:  100%; /* Display the image's original width and extend to the full height */
+    background-repeat: no-repeat; /* Prevent repeating the background image */
+}
 
 

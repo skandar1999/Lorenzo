@@ -29,10 +29,10 @@
             padding: 0 32px;
             font-size: 0.9rem;
             color: #000;">
-                       <button style="border: 0.7px solid #000000; background: none; padding: 5px 10px; font: inherit; cursor: pointer; margin-right: 5px;border-radius: 5px; background-color: #000000; color: #fff; font-weight: bold;" >all</button>
+                       <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;" routerLink="/shop">all</button>
                        <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;" routerLink="/tshirtlist">T-shirt</button>
                        <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;" routerLink="/pololiste">Polo</button>
-                       <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;" routerLink="/chemiselist">Shirt</button>
+                       <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px; background-color: #000000; color: #fff; font-weight: bold;" >Shirt</button>
                        <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;">Jeans</button>
                        <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px;border-radius: 5px;">Outwear</button>
                        <button style="border: 0.7px solid #e2dddd; background: none; padding: 5px 10px; font: inherit; cursor: pointer; color: #000; margin-right: 5px; border-radius: 5px;" >Swinwear</button>
@@ -42,9 +42,9 @@
     
     
     
-    <div class="container-fluid pt-5" >
-        <div class="row mx-10 no-gutters" > 
-            <div class="col-12 col-md-3 mb-4 "  *ngFor="let product of allproducts" (click)="onProductSelected(product)">
+    <div class="container-fluid pt-5">
+        <div class="row mx-10 no-gutters"> 
+            <div class="col-12 col-md-3 mb-4 "  *ngFor="let product of allproducts">
                 <div class="card h-100 product-card custom-card">
                     <img [src]="getProductImageUrl(product.image)" alt="Product Image" class="product-image">
                     <div class="card-body">
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-
+    
     
     
 </section>

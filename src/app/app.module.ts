@@ -23,6 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SupprimeProductDialogComponentComponent } from './supprime-product-dialog-component/supprime-product-dialog-component.component';
+import { POLOlistComponent } from './pololist/pololist.component';
+import { CHEMISElistComponent } from './chemiselist/chemiselist.component';
+import { TShirtlistComponent } from './t-shirtlist/t-shirtlist.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { SupprimeProductDialogComponentComponent } from './supprime-product-dial
     AddproductComponent,
     ListeallproductsComponent,
     EditProductDialogComponentComponent,
-    SupprimeProductDialogComponentComponent
+    SupprimeProductDialogComponentComponent,
+    POLOlistComponent,
+    CHEMISElistComponent,
+    TShirtlistComponent
   ],
 
   imports: [

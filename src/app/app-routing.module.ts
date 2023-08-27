@@ -9,6 +9,9 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductshopComponent } from './productshop/productshop.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { ListeallproductsComponent } from './listeallproducts/listeallproducts.component';
+import { POLOlistComponent } from './pololist/pololist.component';
+import { CHEMISElistComponent } from './chemiselist/chemiselist.component';
+import { TShirtlistComponent } from './t-shirtlist/t-shirtlist.component';
 
 const routes: Routes = [
 
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: 'addproduct', component: AddproductComponent },
   { path: 'listeallproducts', component: ListeallproductsComponent },
 
+  { path: 'pololiste', component: POLOlistComponent },
+  { path: 'chemiselist', component: CHEMISElistComponent },
+  { path: 'tshirtlist', component: TShirtlistComponent },
 
 ];
 
