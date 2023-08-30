@@ -181,3 +181,22 @@ body {
 .logout-link:hover {
   color: #555;
 }
+
+
+
+
+.user-details {
+  margin-top: 20px;
+  background-color: #faf8f8;
+  padding: 20px;
+}
+
+.detail-item {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
