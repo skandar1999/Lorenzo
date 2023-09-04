@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { ProductsService } from 'src/services/products.service';
 
 @Component({
-  selector: 'app-chemiselist',
-  templateUrl: './chemiselist.component.html',
-  styleUrls: ['./chemiselist.component.css']
+  selector: 'app-promotion',
+  templateUrl: './promotion.component.html',
+  styleUrls: ['./promotion.component.css']
 })
-export class CHEMISElistComponent implements OnInit {
-
+export class PromotionComponent implements OnInit {
   allproducts: any[] = [];
   product: any[] = [];
 
@@ -18,12 +17,14 @@ export class CHEMISElistComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getproductChemise(); // Call the method to fetch products on component initialization
+    this.getProductsWithPromo(); // Call the method to fetch products on component initialization
 
   }
 
-  getproductChemise() {
-    this.productservice.getCHEMISE().subscribe(
+
+
+  getProductsWithPromo() {
+    this.productservice.getProductsWithPromo().subscribe(
       prods => {
         console.log(prods);
         this.allproducts = prods; // Assign the products array directly
@@ -37,8 +38,7 @@ export class CHEMISElistComponent implements OnInit {
   getProductImageUrl(image: string): string {
     return `http://localhost:3000/uploads/${image}`; // Adjust the URL as needed
   }
-  
-
+    
   onProductSelected(product: any) {
     console.log('Selected Product:', product);
     if (product && product._id) {
@@ -47,4 +47,7 @@ export class CHEMISElistComponent implements OnInit {
         console.log('Invalid product or missing product ID');
     }
 }
+
+
+
 }

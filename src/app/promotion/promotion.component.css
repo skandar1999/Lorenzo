@@ -5,7 +5,14 @@
         transition: all 0.3s ease; /* Add a transition for a smoother effect */
     }
     .product-image {
-        height: 66%; /* Ensure the image takes up the full width of the container */
+        height: 70%; /* Ensure the image takes up the full width of the container */
         object-fit: cover; /* Ensure the image covers the entire container */
     }
     
+
+    .product-price {
+        text-decoration: line-through;
+        text-decoration-style: dashed;
+    }
+
+ 

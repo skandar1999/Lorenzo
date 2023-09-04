@@ -144,3 +144,36 @@
 }
 
 /* ... (existing styles) ... */
+.fas {
+  font-size: 20px;
+}
+
+
+
+/* Styling for the cart icon container */
+.cart-icon {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #333; /* Icon color */
+}
+
+/* Styling for the badge */
+.badge {
+  position: absolute;
+  top: -10px; /* Adjust the badge position */
+  right: -10px; /* Adjust the badge position */
+  background-color: #eca841; /* Badge background color */
+  color: #fff; /* Badge text color */
+  font-size: 10px; /* Badge font size */
+  padding: 3px 6px; /* Badge padding */
+  border-radius: 50%; /* Make the badge a circle */
+}
+
+/* Styling for the link (optional) */
+.nav-link {
+  text-decoration: none; /* Remove underlines from the link */
+  color: #333; /* Link color */
+}
+

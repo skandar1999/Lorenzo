@@ -7,22 +7,56 @@
         Ref: {{ product._id }}
       </h4>
 
+      <h4
+      style="
+        color:#000000;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+          text-decoration: line-through;
+        text-decoration-style: dashed;
+      "
+      *ngIf="product.promotion == true"      >
+      {{ product.prix }}
+    </h4>
+
+    <h3
+      style="
+        color:#000000;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+          
+      "
+      *ngIf="product.promotion == false"      >
+      {{ product.prix }}
+    </h3>
+
+
       <h3
         style="
-          color: rgb(10, 10, 10);
+          color:#eca841;
           font-weight: bold;
           font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
             Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
             sans-serif;
         "
-      >
-        {{ product.prix }}
+        *ngIf="product.promotion == true"      >
+        {{ product.promoprix }}
       </h3>
+
+
       <h2 style="color: rgb(0, 0, 0)">{{ product.description }}</h2>
       <div class="home-button-container">
-        <button class="home-button">
-          <i class="fas fa-shopping-cart mr-2"></i> Add to Basket
-        </button>
+        <button
+        class="home-button"
+        (click)="addToCart(product)"
+      >
+        <i class="fas fa-shopping-cart mr-2" ></i> Add to Basket
+      </button>
+
         <i class="far fa-heart ml-2"></i>
         <!-- Heart icon -->
       </div>
@@ -63,7 +97,7 @@
     <div class="row mx-10 no-gutters">
       <div
         class="col-12 col-md-3 mb-4"
-        *ngFor="let product of allproducts.slice(3, 7)"
+        *ngFor="let product of allproducts.slice(0, 7)"
       >
         <div class="card h-100 product-card custom-card">
           <img

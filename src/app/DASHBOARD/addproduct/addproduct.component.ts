@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/services/auth.service';
 import { ProductsService } from 'src/services/products.service';
 
 @Component({
@@ -12,8 +13,15 @@ export class AddproductComponent implements OnInit {
   successMessage: string | null = null;
   errorMessage: string | null = null;
   
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService,
+    public authService: AuthService,
+    ) {}
+    
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 
@@ -21,12 +29,14 @@ export class AddproductComponent implements OnInit {
     if (!this.selectedFile) {
       return;
     }
+    
   
     const formData = new FormData();
     formData.append('name', this.product.name);
     formData.append('prix', this.product.prix);
     formData.append('description', this.product.description);
     formData.append('categorie', this.product.categorie);
+    formData.append('promotion', this.product.promotion);
     formData.append('image', this.selectedFile);
   
     this.productService.addProduct(formData)

@@ -1,7 +1,7 @@
 <section class="user-dashboard page-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-5 col-sm-12 col-lg-3 user-section">
+      <div class="col-12 col-md-5 col-sm-12 col-lg-3 user-section" *ngIf="user">
         <!-- User Image -->
         <div class="content text-center">
           <div class="image-section">
@@ -32,14 +32,19 @@
         <a class="logout-link" href="/login" (click)="onLogout()" type="submit"
           ><i class="fas fa-sign-out-alt"></i> Logout
         </a>
+        <a class="logout-link" routerLink="/dashboard" type="submit" *ngIf="user.role === 'admin'">
+          <i class="fas fa-chart-bar"></i> Dashboard
+        </a>
+        
       </div>
 
       <div class="col-12 col-md-7 col-sm-12 col-lg-9">
         <div class="tab-pane fade show active" id="settings" role="tabpanel">
           <div class="acccount-settings">
-            <h4 class="mb-4">
+            <h2 class="mb-4">
               These details appear partially on your profile. 
-            </h4>
+            </h2>
+
 
             
             <div class="user-details">
@@ -78,8 +83,8 @@
                   autocomplete="off"
                   class="form-control"
                   name="name"
-                  value="{{ user.name }}"
-                  [(ngModel)]="newName"
+                  placeholder="{{ this.user.name }}"
+                  [(ngModel)]="this.name"
                 />
               </div>
 
@@ -90,26 +95,25 @@
                   autocomplete="off"
                   class="form-control"
                   name="lastname"
-                  value="{{ user.phone }}"
-                  [(ngModel)]="newLastName"
+                  placeholder="{{ user.lastname}}"
+                  [(ngModel)]="this.lastname"
                 />
               </div>
 
-              <div
-                class="form-group mb-4"
-                [ngClass]="{ 'text-danger': this.errorMessage }"
-              >
+              <div class="form-group mb-4" >
                 <label>Mobile</label>
                 <input
                   autocomplete="off"
                   type="text"
                   class="form-control"
                   name="phone"
-                  value="user.phone"
-                  [(ngModel)]="newPhone"
+                  placeholder="{{ user.phone }}"
+                  [(ngModel)]="phone"
                 />
               </div>
             </form>
+            
+            
 
             <form class="mt-5">
               <h4>Password Change</h4>
@@ -227,11 +231,7 @@
                 <span class="notmatch">{{ errorMessagepw }}</span>
               </div>
 
-              <div *ngIf="not">
-                <span class="notmatch"
-                  >Veuillez verifier votre nouveaux Mot de passe.</span
-                >
-              </div>
+             
               <button
                 type="submit"
                 class="btn btn-success"

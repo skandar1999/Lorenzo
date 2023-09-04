@@ -15,17 +15,20 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductshopComponent } from './productshop/productshop.component';
-import { AddproductComponent } from './addproduct/addproduct.component';
-import { ListeallproductsComponent } from './listeallproducts/listeallproducts.component';
+import { AddproductComponent } from './DASHBOARD/addproduct/addproduct.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditProductDialogComponentComponent } from './edit-product-dialog-component/edit-product-dialog-component.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { SupprimeProductDialogComponentComponent } from './supprime-product-dialog-component/supprime-product-dialog-component.component';
 import { POLOlistComponent } from './pololist/pololist.component';
 import { CHEMISElistComponent } from './chemiselist/chemiselist.component';
 import { TShirtlistComponent } from './t-shirtlist/t-shirtlist.component';
+import { AppForbiddenComponent } from './app-forbidden/app-forbidden.component';
+import { PromotionComponent } from './promotion/promotion.component';
+import { DashboardHomeComponent } from './DASHBOARD/dashboard-home/dashboard-home.component';
+import { EditProductDialogComponentComponent } from './DASHBOARD/edit-product-dialog-component/edit-product-dialog-component.component';
+import { SupprimeProductDialogComponentComponent } from './DASHBOARD/supprime-product-dialog-component/supprime-product-dialog-component.component';
+import { CartComponentComponent } from './cart-component/cart-component.component';
 
 
 @NgModule({
@@ -41,12 +44,16 @@ import { TShirtlistComponent } from './t-shirtlist/t-shirtlist.component';
     ShopComponent,
     ProductshopComponent,
     AddproductComponent,
-    ListeallproductsComponent,
     EditProductDialogComponentComponent,
     SupprimeProductDialogComponentComponent,
     POLOlistComponent,
     CHEMISElistComponent,
-    TShirtlistComponent
+    TShirtlistComponent,
+    AppForbiddenComponent,
+    PromotionComponent,
+    DashboardHomeComponent,
+    CartComponentComponent,
+    
   ],
 
   imports: [

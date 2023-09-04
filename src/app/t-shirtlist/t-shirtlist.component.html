@@ -42,17 +42,25 @@
     
     
     
-    <div class="container-fluid pt-5">
-        <div class="row mx-10 no-gutters"> 
-            <div class="col-12 col-md-3 mb-4 "  *ngFor="let product of allproducts">
+    <div class="container-fluid pt-5" >
+        <div class="row mx-10 no-gutters" > 
+            <div class="col-12 col-md-3 mb-4 "  *ngFor="let product of allproducts" (click)="onProductSelected(product)">
                 <div class="card h-100 product-card custom-card">
                     <img [src]="getProductImageUrl(product.image)" alt="Product Image" class="product-image">
                     <div class="card-body">
                         <h4 class="h6 mb-2 text-dark product-name">{{ product.name }}</h4>
                         <div class="description-hover">
                             <p class="mb-3 text-muted">{{ product.description }}</p>
-                            <h5 class="h5 mb-0 text-dark product-price font-weight-bold">{{ product.prix }}</h5>
-                        </div>
+                            <h5 *ngIf="product.promotion == true" class="h4 mb-0 text-dark product-price font-weight-bold" style="text-decoration: line-through; text-decoration-style: dashed;">
+                                {{ product.prix }} DT
+                              </h5>
+
+                              <h4 *ngIf="product.promotion == false" class="h4 mb-0 text-dark product-price font-weight-bold" >
+                                {{ product.prix }} DT
+                              </h4>
+                              <h4 *ngIf="product.promotion == true" class="h4 mb-0 product-price-promo font-weight-bold" style="color: #eca841;">
+                                {{ product.promoprix }} DT
+                              </h4>                        </div>
                     </div>
                 </div>
             </div>

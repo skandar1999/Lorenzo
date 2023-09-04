@@ -1,14 +1,68 @@
-<!-- Section: Design Block -->
-<section class="text-center">
+<div  class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+              class="fas fa-user-secret me-2"></i>Admin</div>
+      <div class="list-group list-group-flush my-3">
+          <a routerLink="/addproduct" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                  class="fas fa-tachometer-alt me-2"></i>Add Product</a>
+       
+          <a routerLink="/dashboard" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-chart-line me-2"></i>Liste Product</a>
+      
+          
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-gift me-2"></i>Commande</a>
+
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-comment-dots me-2"></i>Chat</a>
+          
+          <a href="/login" (click)="onLogout()" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                  class="fas fa-power-off me-2"></i>Logout</a>
+      </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+          <div class="d-flex align-items-center">
+              <i class="fas fa-align-left primary-text fs-4 me-3"  id="menu-toggle"></i>
+              <h2 class="fs-2 m-0">Dashboard</h2>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                     
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+
+      <div class="container-fluid px-1">
+          
+          
+          <section class="text-center">
     <!-- Background image -->
-    <div class="p-5 bg-image" style="
-          background-image: url('https://static.vecteezy.com/system/resources/previews/019/489/387/non_2x/3d-blue-geometric-abstract-background-overlap-layer-on-dark-space-with-diagonal-lines-decoration-modern-graphic-design-element-striped-style-for-banner-flyer-card-brochure-cover-or-landing-page-vector.jpg');
+    <div class="p-2 bg-image" style="
           height: 150px;
           "></div>
     <!-- Background image -->
   
     <div class="card mx-4 mx-md-5 shadow-5-strong" style="
-          margin-top: -100px;
+          margin-top: -150px;
           background: hsla(0, 0%, 100%, 0.8);
           backdrop-filter: blur(30px);
           ">
@@ -57,9 +111,23 @@
 
                
                 </select>
+               
             </div>
-            
-    
+
+
+            <div class="form-outline mb-4">
+               <label class="form-label" for="categorie">Product Promotion</label>
+
+            <select class="form-control custom-select" id="promotion" name="promotion" [(ngModel)]="product.promotion" required>
+              <option value="true">PROMOTION</option>
+              <option value="false">NO PROMOTION</option>
+           
+            </select>
+               
+             </div>
+
+
+
               <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example2">Product Image</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*" (change)="onFileChange($event)" required>
@@ -70,10 +138,8 @@
                 confirm add   
             </button><br>
 
-            <button routerLink="/listeallproducts" class="btn btn-dark" style="margin-top:20px;">
-              Liste product </button>
             
-
+          
   
                 <div class="alert alert-success alert-dismissible fade show" *ngIf="successMessage">
                     <i class="fas fa-check-circle"></i>{{ successMessage }}

@@ -6,6 +6,7 @@ import { UserService } from 'src/services/user.service';
 import { User } from '../footer/models/user';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CartService } from 'src/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   users!: User[];
   user: any; // Use your User type
-  
+  cartItemCount: number = 0;
+
 
   constructor(
     public authService: AuthService,
@@ -23,7 +25,8 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute,
     private jwtHelper: JwtHelperService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
 
 
   ) {}  
@@ -32,7 +35,10 @@ export class HeaderComponent implements OnInit {
     this.route.params.subscribe(params => {
       const token = params['token'];
       this.user = this.jwtHelper.decodeToken(token);
-
+      this.cartService.getCartItems().subscribe(items => {
+        this.cartItemCount = items.length;
+      });
+    
     });
     
   } 

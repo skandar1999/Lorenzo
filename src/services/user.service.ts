@@ -41,8 +41,14 @@ export class UserService {
     return this.http.post(url, data);
   }
 
-  updateUserData(userId: string, newData: any): Observable<any> {
-    const url = `${this.baseUrl}/updateUserData/${userId}`;
-    return this.http.put(url, newData);
+
+
+
+
+  updateUserData(userId: string, newUser: any): Observable<any> {
+    const url = `${this.baseUrl}/updateuserdata/${userId}`;
+        return this.http.put(url, newUser);
   }
+  
+  
 }

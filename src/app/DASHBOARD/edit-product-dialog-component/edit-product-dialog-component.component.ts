@@ -9,6 +9,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./edit-product-dialog-component.component.css']
 })
 export class EditProductDialogComponentComponent implements OnInit {
+
+  
   @Output() dialogClosed: EventEmitter<any> = new EventEmitter();
   productName!: string; // Define the productName property
   successMessage: string | null = null; // Initialize with null
@@ -16,6 +18,7 @@ export class EditProductDialogComponentComponent implements OnInit {
   @Input() productData: any = {
     name: '',
     prix: '',
+    promoprix: '',
     description: '',
     categorie: '',
     imageURL: '' // Add the imageURL property to hold the image URL

@@ -7,11 +7,16 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductshopComponent } from './productshop/productshop.component';
-import { AddproductComponent } from './addproduct/addproduct.component';
-import { ListeallproductsComponent } from './listeallproducts/listeallproducts.component';
+import { AddproductComponent } from './DASHBOARD/addproduct/addproduct.component';
 import { POLOlistComponent } from './pololist/pololist.component';
 import { CHEMISElistComponent } from './chemiselist/chemiselist.component';
 import { TShirtlistComponent } from './t-shirtlist/t-shirtlist.component';
+import { AppForbiddenComponent } from './app-forbidden/app-forbidden.component';
+import { UserGuard } from './guards/user.guard';
+import { PromotionComponent } from './promotion/promotion.component';
+import { DashboardHomeComponent } from './DASHBOARD/dashboard-home/dashboard-home.component';
+import { AdminGuard } from './guards/admin.guard';
+import { CartComponentComponent } from './cart-component/cart-component.component';
 
 const routes: Routes = [
 
@@ -23,17 +28,21 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetpasswordComponent },
   { path: 'shop', component: ShopComponent },
 
-  { path: 'profile', component: ProfileDetailsComponent },
+  { path: 'profile', component: ProfileDetailsComponent ,canActivate: [UserGuard]  },
   { path: 'products/:id', component: ProductshopComponent },
 
   { path: 'addproduct', component: AddproductComponent },
-  { path: 'listeallproducts', component: ListeallproductsComponent },
 
   { path: 'pololiste', component: POLOlistComponent },
   { path: 'chemiselist', component: CHEMISElistComponent },
   { path: 'tshirtlist', component: TShirtlistComponent },
+  { path: 'app-forbidden', component: AppForbiddenComponent },
+  { path: 'promotion', component: PromotionComponent },
+  { path: 'dashboard', component: DashboardHomeComponent,canActivate: [AdminGuard]   },
+  { path: 'basket', component:  CartComponentComponent}
 
-];
+
+];  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

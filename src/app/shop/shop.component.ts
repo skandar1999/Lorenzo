@@ -17,13 +17,13 @@ export class ShopComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getproducts(); // Call the method to fetch products on component initialization
+    this.getProductsNoPromo(); // Call the method to fetch products on component initialization
 
   }
 
 
 
-  getproducts() {
+  getProductsNoPromo() {
     this.productservice.getProducts().subscribe(
       prods => {
         console.log(prods);

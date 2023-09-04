@@ -38,4 +38,13 @@ export class POLOlistComponent implements OnInit {
     return `http://localhost:3000/uploads/${image}`; // Adjust the URL as needed
   }
 
+
+  onProductSelected(product: any) {
+    console.log('Selected Product:', product);
+    if (product && product._id) {
+        this.router.navigate(['/products', product._id]); // Use _id property
+    } else {
+        console.log('Invalid product or missing product ID');
+    }
+}
 }

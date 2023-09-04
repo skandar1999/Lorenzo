@@ -16,6 +16,15 @@ export class ProductsService {
     return this.http.get<any>(`${this.baseUrl}/getallproduct`);
   }
 
+  getProductsNoPromo(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getallproductnopromo`);
+  }
+
+
+  getProductsWithPromo(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getallproductwithpromo`);
+  }
+
 
   getPOLO(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/getpoloproducts`);
@@ -57,5 +66,8 @@ export class ProductsService {
   
  
 
-
+  getCountOfProducts(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/countProducts`);
+  }
+  
 }

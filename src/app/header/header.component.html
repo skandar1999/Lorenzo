@@ -35,7 +35,7 @@
           </li>
 
           <li class="nav-item">
-  <a class="nav-link" style="color:#eca841;">PROMOTION UP TO 50% OFF</a>
+  <a class="nav-link" style="color:#eca841;" routerLink="/promotion">PROMOTION UP TO 50% OFF</a>
 </li>
 
         </ul>
@@ -65,18 +65,18 @@
               </li>
 
 
+                        <!-- header.component.html -->
+                        <li class="nav-item d-flex" *ngIf="authService.isloggedIn">
+                          <a class="nav-link" routerLink="/basket">
+                            <div class="cart-icon">
+                              <i class="fas fa-shopping-bag"></i> <!-- Shop icon -->
+                              <span class="badge badge-pill badge-danger">{{ cartItemCount }}</span>
+                              <!-- Display cart item count here -->
+                            </div>
+                          </a>
+                        </li>
+                        
 
-              <li class="nav-item d-flex " *ngIf="authService.isloggedIn">
-                <a class="nav-link" href="#">
-                  <i class="fas fa-heart" ></i> <!-- Like icon -->
-                </a>
-              </li>
-
-              <li class="nav-item d-flex" *ngIf="authService.isloggedIn" >
-                <a class="nav-link" routerLink="/shop">
-                  <i class="fas fa-shopping-bag"></i> <!-- Shop icon -->
-                </a>
-              </li> 
 
              <li class="nav-item d-flex align-items-center">
                   <img routerLink="/profile" *ngIf="authService.isloggedIn" [src]="getUserImageUrl()" alt="User Image" class="user-image">

@@ -75,9 +75,14 @@ export class AuthService {
     );
   }
 
-  decodeToken(token: string) {
-    const decodedToken = this.jwtHelper.decodeToken(token);
-    console.log('Decoded Token:', decodedToken);
+  decodeToken(token: string): any {
+    try {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      return decodedToken;
+    } catch (error) {
+      // Handle token decoding errors, e.g., token is invalid
+      return null;
+    }
   }
 
   getUserDetailsByEmail(id: string): Observable<any> {
@@ -92,6 +97,14 @@ export class AuthService {
     window.localStorage.removeItem('jwt');
     window.localStorage.removeItem('username');
     this.router.navigate(['/login']);
+  }
+
+
+  isUser(): Boolean {
+    if (!this.isloggedIn)
+      //this.roles== undefiened
+      return false;
+    return this.isloggedIn;
   }
 
 

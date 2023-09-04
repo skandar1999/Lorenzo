@@ -8,8 +8,17 @@
      <option value="chemise">Chemise</option>
      <option value="shoes">Shoes</option>
      <option value="POLO">POLO</option>
-     <!-- Add more categories as needed -->
-  </select>
+
+    </select>
+   
+    <select [(ngModel)]="productData.promotion" class="form-control" placeholder="Select promotion">
+      <option value="true">PROMOTION</option>
+      <option value="false">NO PROMOTION</option>
+     </select> 
+
+     <input type="text" [(ngModel)]="productData.promoprix" class="form-control" placeholder="promoPrice">
+
+
   <div class="modal-body">
     <label for="imageInput">Current Image:</label>
     <img [src]="getProductImageUrl(productData.image)" alt="Product Image" class="current-image" style="max-width: 38%; height: auto;">

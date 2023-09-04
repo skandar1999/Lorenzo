@@ -18,9 +18,9 @@ import { NgForm } from '@angular/forms';
 export class ProfileDetailsComponent implements OnInit {
   loggedInUserId!: string; // Add this property to hold the user ID
 
-  newName: string = '';
-  newLastName: string = '';
-  newPhone: string = '';
+  name!: string ;
+  lastname!: string; 
+  phone!: string ;
 
   users!: User[];
   user: any; // Use your User type
@@ -57,16 +57,11 @@ export class ProfileDetailsComponent implements OnInit {
       console.log('User data:', this.user); // Display user data in the console
     }
 
-    this.getLoggedInUserId();
   });
 }
 
 
 
-  getLoggedInUserId() {
-    console.log(this.user.id);
-    return this.user.id;
-  }
 
   onLogout() {
     this.authService.logout();
@@ -82,31 +77,27 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   updateUserData() {
-    const userId = this.getLoggedInUserId();
-  
-    if (userId) {
-      const newData = {
-        NewName: this.newName,
-        NewLastName: this.newLastName,
-        NewPhone: this.newPhone,
-      };
-  
-      this.userService.updateUserData(userId, newData).subscribe(
-        (updatedUserData) => {
-          this.updateSuccess = true;
-          console.log('Updated User Data:', updatedUserData);
-
-          this.newName = '';
-          this.newLastName = '';
-          this.newPhone = '';
-        },
-        (error) => {
-          console.error('Error updating user data', error);
-          this.errorMessage = 'Error updating user data';
-        }
-      );
+    
+    const newUser = {
+      NewName: this.name,
+      NewLastName: this.lastname,
+      NewPhone: this.phone,
+    };
+    
+    this.userService.updateUserData(this.user.id , newUser).subscribe(
+      (updatedUserData) => {
+        // Handle success (e.g., display a success message)
+        console.log('Updated User Data:', updatedUserData);
+      },
+      (error) => {
+        // Handle error (e.g., display an error message)
+        console.error('Error updating user data', error);
+      }
+    );
     }
-  }
+  
+    
+  
   
   updatePasswordFields() {
     this.passwordFieldsModified = true;
