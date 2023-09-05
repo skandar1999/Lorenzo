@@ -29,6 +29,8 @@ import { DashboardHomeComponent } from './DASHBOARD/dashboard-home/dashboard-hom
 import { EditProductDialogComponentComponent } from './DASHBOARD/edit-product-dialog-component/edit-product-dialog-component.component';
 import { SupprimeProductDialogComponentComponent } from './DASHBOARD/supprime-product-dialog-component/supprime-product-dialog-component.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
+import { CommandeFormulaireComponent } from './commande-formulaire/commande-formulaire.component';
+import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-liste.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
     PromotionComponent,
     DashboardHomeComponent,
     CartComponentComponent,
+    CommandeFormulaireComponent,
+    CommandeListeComponent,
     
   ],
 

@@ -7,7 +7,8 @@ import { Product } from 'src/app/footer/models/product';
   providedIn: 'root'
 })
 export class ProductsService {
-  private baseUrl = 'http://127.0.0.1:3000/product'; // Change this to your backend URL
+  private baseUrl = 'http://127.0.0.1:3000/product'; 
+  private baseResevationUrl = 'http://127.0.0.1:3000/reservation';  
 
   constructor(private http: HttpClient) {}
 
@@ -39,7 +40,7 @@ export class ProductsService {
   }
 
   getProductById(productId: string): Observable<any> {
-    const url = `${this.baseUrl}/getProductById/${productId}`; // Adjust the endpoint URL
+    const url = `${this.baseUrl}/getProductById/${productId}`; 
     return this.http.get(url);
   }
 
@@ -68,6 +69,12 @@ export class ProductsService {
 
   getCountOfProducts(): Observable<any> {
     return this.http.get(`${this.baseUrl}/countProducts`);
+  }
+  
+
+  reserveProducts(requestData: any): Observable<any> {
+    const url = `${this.baseResevationUrl}/reserveproducts`;
+    return this.http.post(url, requestData);
   }
   
 }

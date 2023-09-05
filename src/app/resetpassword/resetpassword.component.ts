@@ -37,7 +37,6 @@ export class ResetpasswordComponent implements OnInit {
         this.resetSuccessful = true;
         // navigate to login page after 3 seconds
         setTimeout(() => {
-          // replace 'login' with the route path for your login page
           this.router.navigate(['login']);
         }, 3000);
       }, error => {

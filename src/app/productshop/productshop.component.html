@@ -18,7 +18,7 @@
         text-decoration-style: dashed;
       "
       *ngIf="product.promotion == true"      >
-      {{ product.prix }}
+      {{ product.prix }} DT
     </h4>
 
     <h3
@@ -31,7 +31,7 @@
           
       "
       *ngIf="product.promotion == false"      >
-      {{ product.prix }}
+      {{ product.prix }} DT
     </h3>
 
 
@@ -44,7 +44,7 @@
             sans-serif;
         "
         *ngIf="product.promotion == true"      >
-        {{ product.promoprix }}
+        {{ product.promoprix }} DT
       </h3>
 
 
@@ -97,7 +97,7 @@
     <div class="row mx-10 no-gutters">
       <div
         class="col-12 col-md-3 mb-4"
-        *ngFor="let product of allproducts.slice(0, 7)"
+        *ngFor="let product of allproducts.slice(0, 8)"
       >
         <div class="card h-100 product-card custom-card">
           <img

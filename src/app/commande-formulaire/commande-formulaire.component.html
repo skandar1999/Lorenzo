@@ -1,0 +1,50 @@
+<div class="modal-body">
+    <form (ngSubmit)="submitForm()" #orderForm="ngForm" class="delivery-form">
+  
+      <!-- Delivery method section -->
+      <h2>Standard home delivery
+
+      </h2>
+      <div class="form-group">
+        <!-- Include radio buttons or other inputs for delivery method -->
+      </div>
+  
+      <!-- Recipient's details section -->
+      <h2>Recipient's details</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="userName" name="userName" class="form-control" [(ngModel)]="userData.userName" required>
+      </div>
+      <div class="form-group">
+        <label for="surname">Last Name:</label>
+        <input type="text" id="userLastName" name="userLastName" class="form-control" [(ngModel)]="userData.userLastName" required>
+      </div>
+     
+      <div class="form-group">
+        <label for="telephone">Telephone:</label>
+        <input type="tel" id="UserTelephone" name="UserTelephone" class="form-control" [(ngModel)]="userData.UserTelephone" required>
+      </div>
+  
+     
+      <div class="form-group">
+        <label for="region">Adresse</label>
+        <input type="text" id="UserRegion" name="UserRegion" class="form-control" [(ngModel)]="userData.UserRegion" required>
+      </div>
+    
+  
+      <!-- Buttons for navigation -->
+      <div class="text-center">
+        <button type="button" class="btn btn-secondary back-button" (click)="bsModalRef.hide()">Cancel </button>
+        <button type="submit" class="btn btn-dark continue-button" style="margin-left: 5px;"(click)="sendReservationData()">Confirm Reservation</button><br>
+       
+        <div class="alert alert-success alert-dismissible fade show" *ngIf="successMessage">
+          <i class="fas fa-check-circle"></i>{{ successMessage }}
+        
+        </div>
+        
+
+        </div>
+
+    </form>
+  </div>
+  

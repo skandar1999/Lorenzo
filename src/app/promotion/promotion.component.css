@@ -1,12 +1,11 @@
-    /* Custom card class with no border-radius */
     .custom-card {
         border-radius: 0;
-        border-color: white; /* Set border-radius to 0 to remove rounded corners */
-        transition: all 0.3s ease; /* Add a transition for a smoother effect */
+        border-color: white; 
+        transition: all 0.3s ease; 
     }
     .product-image {
-        height: 70%; /* Ensure the image takes up the full width of the container */
-        object-fit: cover; /* Ensure the image covers the entire container */
+        height: 70%; 
+        object-fit: cover; 
     }
     
 

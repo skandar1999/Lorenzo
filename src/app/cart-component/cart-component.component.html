@@ -1,7 +1,6 @@
 <div class="cart-container">
     <h2>Your Shopping Cart</h2>
   
-    <!-- <h4>You need to spend 100.000 DT more to get your FREE STANDARD DELIVERY</h4> -->
   
     <div *ngIf="cartItems.length === 0" class="empty-cart-message">
       Your cart is empty.
@@ -14,26 +13,27 @@
         </div>
         <div class="item-details">
           <h3>{{ item.name }}</h3>
+
           <p>{{ item.description }}</p>
           
           <h3
             class="item-price"
             *ngIf="item.promotion == false"
           >
-            {{ item.prix }} 
+            {{ item.prix }} DT
           </h3>
   
           <h3
             class="item-price promotion"
             *ngIf="item.promotion == true"
           >
-            {{ item.promoprix }} 
+            {{ item.promoprix }} DT
           </h3>
         </div>
   
         <div class="remove-button">
           <button (click)="removeItemFromCart(item)">
-            <i class="fas fa-trash"></i> 
+            <i class="fa fa-trash"></i> 
           </button>
         </div>
 
@@ -57,7 +57,12 @@
           <span>{{ totalAmount }} DT</span>
         </div>
       </div>
+
+      <!-- *ngIf="cartItems.length > 0" -->
     
+      <button class="PlaceOrder" (click)="openConfirmDialog()" >Place Order</button>
+
+  
   </div>
   
   

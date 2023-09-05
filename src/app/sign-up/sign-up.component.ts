@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/services/user.service'; // Update path
-import { User } from '../footer/models/user'; // Update path
+import { UserService } from 'src/services/user.service'; 
+import { User } from '../footer/models/user'; 
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   newUser: User = new User();
 
-  errorMessage: string = ''; // Add this property
+  errorMessage: string = '';
   successMessage: string = '';
 
 
@@ -26,19 +26,19 @@ export class SignUpComponent implements OnInit {
         this.successMessage = 'User registered successfully'; // Set the success message
   
         setTimeout(() => {
-          this.successMessage = ''; // Clear the success message after a delay
-        }, 3000); // Delay in milliseconds (e.g., 2000 ms = 2 seconds)
+          this.successMessage = ''; 
+        }, 3000); 
       },
       (error) => {
         console.error('Error during registration:', error);
         if (error instanceof Error && error.message.includes('Email already exists')) {
-          this.errorMessage = 'Email already exists'; // Set the error message
+          this.errorMessage = 'Email already exists'; 
 
           setTimeout(() => {
-            this.errorMessage = ''; // Clear the success message after a delay
-          }, 3000); // Delay in milliseconds (e.g., 2000 ms = 2 seconds)
+            this.errorMessage = ''; 
+          }, 3000);
         } else {
-          // Handle other errors
+          
         }
       }
     );
