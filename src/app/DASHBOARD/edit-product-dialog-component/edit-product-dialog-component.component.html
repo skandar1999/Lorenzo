@@ -3,24 +3,31 @@
   <input type="text" [(ngModel)]="productData.prix" class="form-control" placeholder="Price">
   <textarea [(ngModel)]="productData.description" class="form-control" placeholder="Description"></textarea>
   <select [(ngModel)]="productData.categorie" class="form-control" placeholder="Select Category">
-     <option value="tshirt">T-Shirt</option>
-     <option value="jeans">Jeans</option>
-     <option value="chemise">Chemise</option>
-     <option value="shoes">Shoes</option>
-     <option value="POLO">POLO</option>
+    <option value="tshirt">T-Shirt</option>
+    <option value="jeans">Jeans</option>
+    <option value="chemise">Chemise</option>
+    <option value="shoes">Shoes</option>
+    <option value="polo">POLO</option>
+  </select>
 
-    </select>
-   
-    <select [(ngModel)]="productData.promotion" class="form-control" placeholder="Select promotion">
-      <option value="true">PROMOTION</option>
-      <option value="false">NO PROMOTION</option>
-     </select> 
+  <!-- Promotion Select -->
+  <select [(ngModel)]="productData.promotion" class="form-control" placeholder="Select promotion">
+    <option value="true">PROMOTION</option>
+    <option value="false">NO PROMOTION</option>
+  </select>
+  
+  <!-- Conditional Display of Promo Price -->
+  <div *ngIf="productData.promotion === 'true'">
+    <input type="text" [(ngModel)]="productData.promoprix" class="form-control" placeholder="Promo Price">
+  </div>
 
-     <input type="text" [(ngModel)]="productData.promoprix" class="form-control" placeholder="promoPrice">
-
+  <!-- Available (disponible) -->
+  <div class="form-check">
+    <input type="checkbox" [(ngModel)]="productData.disponible" class="form-check-input" id="disponibleCheck">
+    <label class="form-check-label" for="disponibleCheck">Available</label>
+  </div>
 
   <div class="modal-body">
-    <label for="imageInput">Current Image:</label>
     <img [src]="getProductImageUrl(productData.image)" alt="Product Image" class="current-image" style="max-width: 38%; height: auto;">
   </div>
 </div>
@@ -28,9 +35,4 @@
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cancel</button>
   <button type="button" class="btn btn-dark" (click)="saveChanges()">Save Changes</button>
-</div>
-
-<div class="alert alert-success alert-dismissible fade show" *ngIf="successMessage">
-  <i class="fas fa-check-circle"></i>
-  {{ successMessage }}
 </div>

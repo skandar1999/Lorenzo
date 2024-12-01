@@ -7,6 +7,7 @@ export class Product {
     categorie!: string; 
     promotion!:boolean;
     image!:string;
+    disponible!:boolean;
   
   }
   

@@ -47,8 +47,17 @@ export class UserService {
 
   updateUserData(userId: string, newUser: any): Observable<any> {
     const url = `${this.baseUrl}/updateuserdata/${userId}`;
-        return this.http.put(url, newUser);
+    return this.http.put(url, newUser);
+  }
+
+  updatePassword(userId: number, payload: { currentPassword: string, newPassword: string }): Observable<any> {
+    const url = `${this.baseUrl}/updatepassword/${userId}`;
+    return this.http.put(url, payload, { responseType: 'text' });  
   }
   
+  
+  getCountOfUsers(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/countUsers`);
+  }
   
 }

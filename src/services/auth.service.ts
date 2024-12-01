@@ -10,103 +10,109 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private loginURL = 'http://127.0.0.1:3000/user/login';
-  email!: string;
-  public loggedUser!: string;
-  users!: User[];
-  private loggedInUserId: string | undefined;
-
-  token!: string;
+  private tokenKey = 'jwt';  // Use a constant for token storage key
   public isloggedIn: Boolean = false;
+  private token!: string;
+  public email!: string;
 
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService,
-    private helper: JwtHelperService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    // Attach the event listener to 'storage' in ngOnInit
+    // Attach event listener to update token if changed in localStorage
     window.addEventListener('storage', (event) => {
-      if (event.storageArea === localStorage && event.key === 'jwt') {
+      if (event.storageArea === localStorage && event.key === this.tokenKey) {
+        console.log('Token changed in storage', event.newValue);  // Log new value
         this.loadToken();
       }
     });
+    this.loadToken(); // Load the token on initialization
   }
 
+  // Save token to localStorage and update internal state
   saveToken(jwt: string) {
-    localStorage.setItem('jwt', jwt); // Save token to localStorage
+    console.log('Saving token to localStorage:', jwt); // Log token saving
+    localStorage.setItem(this.tokenKey, jwt); // Save token to localStorage
     this.token = jwt;
     this.isloggedIn = true;
+    this.decodeJWT();
   }
 
-  
-
+  // Decode the JWT and extract the user email
   decodeJWT(): void {
-    if (this.token == undefined) return;
-    const decodedToken = this.helper.decodeToken(this.token);
-    this.email = decodedToken.sub;
-  }
-
-  loadToken() {
-    this.token = localStorage.getItem('jwt')!;
     if (this.token) {
-      this.isloggedIn = true;
-      this.decodeJWT();
-      this.email = localStorage.getItem('email')!; // Change 'username' to 'email'
-    } else {
-      this.isloggedIn = false;
+      const decodedToken = this.jwtHelper.decodeToken(this.token);
+      this.email = decodedToken.sub;
     }
   }
 
-  isTokenExpired(): Boolean {
-    return this.helper.isTokenExpired(this.token);
+  // Load token from localStorage
+  loadToken() {
+    const storedToken = localStorage.getItem(this.tokenKey);
+    console.log('Loading token from localStorage:', storedToken);  // Log token loading
+    if (storedToken) {
+      this.token = storedToken;
+      this.isloggedIn = true;
+      this.decodeJWT();
+    } else {
+      this.isloggedIn = false;
+      console.log('No token found in localStorage');  // Log if no token is found
+    }
   }
 
+  // Check if the token has expired
+  isTokenExpired(): Boolean {
+    return this.jwtHelper.isTokenExpired(this.token);
+  }
+
+  // Get the current token
   getToken(): string {
     return this.token;
   }
 
+  // Handle login process and save token
   login(user: User) {
     return this.http.post<any>(this.loginURL, user).pipe(
       tap((response) => {
-        this.saveToken(response.jwt);
+        if (response.jwt) {
+          this.saveToken(response.jwt);  // Save the new token after login
+        } else {
+          console.error('JWT not received in login response');  // Log if no JWT is received
+        }
       })
     );
   }
 
+  // Decode the token to get its contents
   decodeToken(token: string): any {
     try {
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      return decodedToken;
+      return this.jwtHelper.decodeToken(token);
     } catch (error) {
-      // Handle token decoding errors, e.g., token is invalid
+      // Handle token decoding errors
+      console.error('Error decoding token:', error);
       return null;
     }
   }
 
+  // Fetch user details by their email (or other identifiers)
   getUserDetailsByEmail(id: string): Observable<any> {
     const url = `http://127.0.0.1:3000/user/userdetails/${id}`;
     return this.http.get<any>(url);
   }
 
+  // Logout process
   logout() {
-    this.loggedUser = undefined!;
-    this.token = undefined!;
+    this.token = ''; // Clear token
     this.isloggedIn = false;
-    window.localStorage.removeItem('jwt');
-    window.localStorage.removeItem('username');
-    this.router.navigate(['/login']);
+    localStorage.removeItem(this.tokenKey); // Remove token from storage
+    this.router.navigate(['/login']); // Redirect to login page
   }
 
-
+  // Check if user is logged in
   isUser(): Boolean {
-    if (!this.isloggedIn)
-      //this.roles== undefiened
-      return false;
     return this.isloggedIn;
   }
-
-
-  
 }

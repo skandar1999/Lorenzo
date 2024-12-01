@@ -29,12 +29,17 @@
             </span>
           </div>
         </div>
-        <a class="logout-link" href="/login" (click)="onLogout()" type="submit"
-          ><i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-        <a class="logout-link" routerLink="/dashboard" type="submit" *ngIf="user.role === 'admin'">
-          <i class="fas fa-chart-bar"></i> Dashboard
-        </a>
+        <!-- Logout Link -->
+  
+
+  <!-- Dashboard Link (for admin) -->
+  <a class="dashboard-link" routerLink="/dashboard" type="submit" *ngIf="user.role === 'admin'">
+    <i class="fas fa-chart-bar"></i> Dashboard
+  </a>
+
+  <a class="logout-link" href="/login" (click)="onLogout()" type="submit">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </a>
         
       </div>
 
@@ -49,9 +54,9 @@
             
             <div class="user-details">
               <h3 style="font-weight: bold;">PERSONAL INFORMATION</h3>
-              <h5>
+              <h4>
                 At LORENZO we take your privacy very seriously and are committed to the protection of your personal data. Learn more about how we care for and use your data in our Privacy Policy.
-              </h5>
+              </h4>
       
               <h3 class="detail-item"><strong>YOUR EMAIL ADDRESS:</strong> {{ user.email }}</h3>
               <h3 class="detail-item"><strong>FIRST NAME:</strong> {{ user.name }}</h3>
@@ -111,18 +116,24 @@
                   [(ngModel)]="phone"
                 />
               </div>
+
+              <button
+              type="submit"
+              class="btn btn-success"
+              (click)="updateUserData()"
+            >
+              Save changes</button>
+
+              
             </form>
             
             
-
-            <form class="mt-5">
-              <h4>Password Change</h4>
-
-              <div
-                class="form-group"
-                [ngClass]="{ 'text-danger': errorMessagepw }"
-              >
-                <label for="password">Current Password</label>
+            <form class="mt-2" (ngSubmit)="updatePassword()">
+              <h2 class="mb-4 pt-5">Password Change</h2>
+            
+              <!-- Current Password -->
+              <div class="form-group" [ngClass]="{ 'text-danger': errorMessagepw }">
+                <label for="PasswordActuelle">Current Password</label>
                 <div class="input-group">
                   <input
                     type="{{ hidePassword1 ? 'password' : 'text' }}"
@@ -131,27 +142,19 @@
                     class="form-control"
                     name="PasswordActuelle"
                     [(ngModel)]="PasswordActuelle"
+                    required
                   />
                   <div class="input-group-append">
-                    <span
-                      class="input-group-text toggle-password"
-                      (click)="togglePassword1()"
-                      style="cursor: pointer"
-                    >
-                      <i
-                        class="fa"
-                        [ngClass]="hidePassword1 ? 'fa-eye-slash' : 'fa-eye'"
-                      ></i>
+                    <span class="input-group-text toggle-password" (click)="togglePassword1()" style="cursor: pointer">
+                      <i class="fa" [ngClass]="hidePassword1 ? 'fa-eye-slash' : 'fa-eye'"></i>
                     </span>
                   </div>
                 </div>
               </div>
-
-              <div
-                class="form-group"
-                [ngClass]="{ 'text-danger': errorMessagepw }"
-              >
-                <label for="password">New Password</label>
+            
+              <!-- New Password -->
+              <div class="form-group" [ngClass]="{ 'text-danger': errorMessagepw }">
+                <label for="NewPassword">New Password</label>
                 <div class="input-group">
                   <input
                     type="{{ hidePassword2 ? 'password' : 'text' }}"
@@ -159,27 +162,20 @@
                     autocomplete="off"
                     class="form-control"
                     name="NewPassword"
+                    [(ngModel)]="NewPassword"
+                    required
                   />
                   <div class="input-group-append">
-                    <span
-                      class="input-group-text toggle-password"
-                      (click)="togglePassword2()"
-                      style="cursor: pointer"
-                    >
-                      <i
-                        class="fa"
-                        [ngClass]="hidePassword2 ? 'fa-eye-slash' : 'fa-eye'"
-                      ></i>
+                    <span class="input-group-text toggle-password" (click)="togglePassword2()" style="cursor: pointer">
+                      <i class="fa" [ngClass]="hidePassword2 ? 'fa-eye-slash' : 'fa-eye'"></i>
                     </span>
                   </div>
                 </div>
               </div>
-
-              <div
-                class="form-group"
-                [ngClass]="{ 'text-danger': errorMessagepw }"
-              >
-                <label for="password">Confirm Password</label>
+            
+              <!-- Confirm Password -->
+              <div class="form-group" [ngClass]="{ 'text-danger': errorMessagepw }">
+                <label for="confirmPassword">Confirm Password</label>
                 <div class="input-group">
                   <input
                     type="{{ hidePassword3 ? 'password' : 'text' }}"
@@ -187,59 +183,29 @@
                     autocomplete="off"
                     class="form-control"
                     name="confirmPassword"
+                    [(ngModel)]="confirmPassword"
+                    required
                   />
                   <div class="input-group-append">
-                    <span
-                      class="input-group-text toggle-password"
-                      (click)="togglePassword3()"
-                      style="cursor: pointer"
-                    >
-                      <i
-                        class="fa"
-                        [ngClass]="hidePassword3 ? 'fa-eye-slash' : 'fa-eye'"
-                      ></i>
+                    <span class="input-group-text toggle-password" (click)="togglePassword3()" style="cursor: pointer">
+                      <i class="fa" [ngClass]="hidePassword3 ? 'fa-eye-slash' : 'fa-eye'"></i>
                     </span>
                   </div>
                 </div>
               </div>
-
-              <div
-                class="alert alert-success alert-dismissible fade show"
-                *ngIf="updateSuccess"
-                [class.show]="updateSuccess"
-                role="alert"
-              >
-                <span class="fas fa-check-circle icon"></span>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <span class="text"
-                  >Your information has been successfully updated!
-                </span>
-              </div>
-
-              <div *ngIf="errorMessage">
-                <span class="notmatch">{{ errorMessage }}</span>
-              </div>
-
-              <div *ngIf="errorMessagepw">
-                <span class="notmatch">{{ errorMessagepw }}</span>
-              </div>
-
-             
+            
+              <!-- Save Button -->
               <button
                 type="submit"
                 class="btn btn-success"
-                (click)="updateUserData()"
+                [disabled]="!PasswordActuelle || NewPassword !== confirmPassword || !NewPassword || !confirmPassword"
               >
-                Save changes</button
-              ><br />
+                Save changes
+              </button>
             </form>
+            
+            
+            
           </div>
         </div>
       </div>

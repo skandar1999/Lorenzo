@@ -8,3 +8,16 @@
     height: 70%; /* Ensure the image takes up the full width of the container */
     object-fit: cover; /* Ensure the image covers the entire container */
 }
+
+
+/* Disable pointer events for products that are reserved (disponible: false) */
+.pointer-none {
+    pointer-events: none; /* Prevent click events */
+    opacity: 0.6; /* Optional: Reduce opacity to visually indicate it's unavailable */
+}
+
+/* Optional: Style for 'Reserved' label */
+.product-price-promo[style*="color: #ec5541;"] {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

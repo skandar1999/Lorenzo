@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { ProductsService } from 'src/services/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-addproduct',
@@ -29,7 +30,6 @@ export class AddproductComponent implements OnInit {
     if (!this.selectedFile) {
       return;
     }
-    
   
     const formData = new FormData();
     formData.append('name', this.product.name);
@@ -39,22 +39,35 @@ export class AddproductComponent implements OnInit {
     formData.append('promotion', this.product.promotion);
     formData.append('image', this.selectedFile);
   
-    this.productService.addProduct(formData)
-      .subscribe(
-        (response) => {
-          console.log('Product added successfully:', response);
-          this.successMessage = 'Product added successfully';
+    this.productService.addProduct(formData).subscribe(
+      (response) => {
+        console.log('Product added successfully:', response);
+        this.successMessage = 'Product added successfully';
   
-          // Reload the page after 4 seconds
-          setTimeout(() => {
-            window.location.reload();
-          }, 4000);
-        },
-        (error) => {
-          console.error('Error adding product:', error);
-          this.errorMessage = 'Error adding product';
-        }
-      );
+        // Show SweetAlert for success
+        Swal.fire({
+          title: 'Success!',
+          text: 'Product added successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          // Reload the page after closing the alert
+          window.location.reload();
+        });
+      },
+      (error) => {
+        console.error('Error adding product:', error);
+        this.errorMessage = 'Error adding product';
+  
+        // Show SweetAlert for error
+        Swal.fire({
+          title: 'Error!',
+          text: 'There was an error adding the product.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    );
   }
   
 

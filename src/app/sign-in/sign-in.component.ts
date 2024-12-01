@@ -11,7 +11,7 @@ import { ActivatedRoute, NavigationExtras } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  user: User = new User(); // Initialize user with the User class instance
+  user: User = new User(); 
   hidePassword: boolean = true;
   vide: boolean = false;
 
@@ -60,7 +60,6 @@ export class SignInComponent implements OnInit {
   }
   
   
-
 
 
   togglePassword(): void {

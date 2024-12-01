@@ -9,6 +9,7 @@ import { UserService } from 'src/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-details',
@@ -38,7 +39,11 @@ export class ProfileDetailsComponent implements OnInit {
   errorMessage!: string;
   passwordMatch!: boolean;
   passwordFieldsModified = false;
-  errorMessagepw!: string;
+  hidePassword1: boolean = true;
+  hidePassword2: boolean = true;
+  hidePassword3: boolean = true;
+  errorMessagepw: boolean = false; // Set this based on the error response from the API
+  NewPassword: string = '';
 
   constructor(
     public authService: AuthService,
@@ -54,7 +59,7 @@ export class ProfileDetailsComponent implements OnInit {
 
     if (decodedToken) {
       this.user = decodedToken; // Assign decoded data to the user object
-      console.log('User data:', this.user); // Display user data in the console
+      console.log('JWT Token:', token);
     }
 
   });
@@ -76,46 +81,111 @@ export class ProfileDetailsComponent implements OnInit {
     return `http://localhost:3000/uploads/${this.user.image}`;
   }
 
-  updateUserData() {
-    
-    const newUser = {
-      NewName: this.name,
-      NewLastName: this.lastname,
-      NewPhone: this.phone,
-    };
-    
-    this.userService.updateUserData(this.user.id , newUser).subscribe(
-      (updatedUserData) => {
-        // Handle success (e.g., display a success message)
-        console.log('Updated User Data:', updatedUserData);
-      },
-      (error) => {
-        // Handle error (e.g., display an error message)
-        console.error('Error updating user data', error);
-      }
-    );
+ updateUserData() {
+  const newUser = {
+    NewName: this.name,
+    NewLastName: this.lastname,
+    NewPhone: this.phone,
+  };
+
+  this.userService.updateUserData(this.user.id, newUser).subscribe(
+    (updatedUserData) => {
+      // Display success SweetAlert
+      Swal.fire({
+        icon: 'success',
+        title: 'User Updated',
+        text: 'User data has been successfully updated!',
+        confirmButtonText: 'OK',
+        timer: 3000,
+      });
+      console.log('Updated User Data:', updatedUserData);
+    },
+    (error) => {
+      // Display error SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Update Failed',
+        text: 'An error occurred while updating user data.',
+        confirmButtonText: 'Try Again',
+      });
+      console.error('Error updating user data', error);
     }
-  
-    
-  
+  );
+}
+
+
   
   updatePasswordFields() {
     this.passwordFieldsModified = true;
   }
-
-  public hidePassword1 = true;
-  public hidePassword2 = true;
-  public hidePassword3 = true;
-
-  public togglePassword1(): void {
+  togglePassword1() {
     this.hidePassword1 = !this.hidePassword1;
   }
 
-  public togglePassword2(): void {
+  // Toggle password visibility for New Password
+  togglePassword2() {
     this.hidePassword2 = !this.hidePassword2;
   }
 
-  public togglePassword3(): void {
+  // Toggle password visibility for Confirm Password
+  togglePassword3() {
     this.hidePassword3 = !this.hidePassword3;
   }
+  
+
+  updatePassword(): void {
+    // Validate if the new password and confirm password match
+    if (this.NewPassword !== this.confirmPassword) {
+      this.errorMessagepw = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Password Mismatch',
+        text: 'The new password and confirm password do not match!',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+  
+    if (!this.PasswordActuelle) {
+      this.errorMessagepw = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Current Password Required',
+        text: 'Please enter your current password.',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+  
+    const payload = {
+      currentPassword: this.PasswordActuelle,
+      newPassword: this.NewPassword
+    };
+    
+    this.userService.updatePassword(this.user.id, payload).subscribe({
+      next: (response) => {
+        console.log('Password updated successfully:', response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Password Updated',
+          text: 'Your password has been successfully updated!',
+          confirmButtonText: 'OK',
+          timer: 3000,
+        });
+      },
+      error: (error) => {
+        console.error('Error updating password:', error);
+        this.errorMessagepw = true;
+        Swal.fire({
+          icon: 'error',
+          title: 'Update Failed',
+          text: error.error || 'There was an error while updating your password.',
+          confirmButtonText: 'Try Again',
+        });
+      }
+    });
+  
+  
+  
+}
 }

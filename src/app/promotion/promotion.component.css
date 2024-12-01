@@ -15,3 +15,7 @@
     }
 
  
+.pointer-none {
+    pointer-events: none; /* Prevent click events */
+    opacity: 0.5; /* Optional: Reduce opacity to visually indicate it's unavailable */
+}

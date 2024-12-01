@@ -71,10 +71,25 @@ export class ProductsService {
     return this.http.get(`${this.baseUrl}/countProducts`);
   }
   
+  getCountOfReservations(): Observable<any> {
+    return this.http.get(`${this.baseResevationUrl}/countReservation`);
+  }
 
   reserveProducts(requestData: any): Observable<any> {
     const url = `${this.baseResevationUrl}/reserveproducts`;
     return this.http.post(url, requestData);
   }
+
+
+  getCommandeList(): Observable<any> {
+    return this.http.get<any>(`${this.baseResevationUrl}/allCommande`);
+  }
   
+  confirmCommande(id: string): Observable<any> {
+    return this.http.put(`${this.baseResevationUrl}/confirmCommande/${id}`, {});
+  }
+
+  completedCommande(id: string): Observable<any> {
+    return this.http.put(`${this.baseResevationUrl}/completeCommande/${id}`, {});
+  }
 }

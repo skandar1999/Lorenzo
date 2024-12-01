@@ -19,7 +19,7 @@
             font-size: 0.9rem;
             font-weight: bold;
             color: #777;">
-            <p>Inspire-toi de notre galerie et partage tes looks sur les réseaux sociaux avec #Lorenzostyle et @lorenzo.</p>
+            <p>Inspire-toi de notre galerie et partage tes looks sur les réseaux sociaux avec #Lorenzostyle.</p>
         </div>
     </div>
 
@@ -42,31 +42,43 @@
     
     
     
-    <div class="container-fluid pt-5" >
-        <div class="row mx-10 no-gutters" > 
-            <div class="col-12 col-md-3 mb-4 "  *ngFor="let product of allproducts" (click)="onProductSelected(product)">
+    <div class="container-fluid pt-5">
+        <div class="row mx-10 no-gutters">
+            <div 
+                class="col-12 col-md-3 mb-1" 
+                *ngFor="let product of allproducts" 
+                (click)="onProductSelected(product)" 
+                [ngClass]="{'pointer-none': product.disponible === false}">
+                
                 <div class="card h-100 product-card custom-card">
                     <img [src]="getProductImageUrl(product.image)" alt="Product Image" class="product-image">
                     <div class="card-body">
-                        <h4 class="h6 mb-2 text-dark product-name">{{ product.name }}</h4>
+                        <h4 *ngIf="product.disponible === false" class="h4 mb-0 product-price-promo font-weight-bold" style="color: #ec5541;">
+                            Reserved
+                        </h4>
+                        <h4 class="h6 mb-0 text-dark product-name">{{ product.name }}</h4>
                         <div class="description-hover">
-                            <p class="mb-3 text-muted">{{ product.description }}</p>
+                            <p class="mb-0 text-muted">{{ product.description }}</p>
+                            
+                            <!-- Price display based on promotion -->
                             <h5 *ngIf="product.promotion == true" class="h4 mb-0 text-dark product-price font-weight-bold" style="text-decoration: line-through; text-decoration-style: dashed;">
                                 {{ product.prix }} DT
-                              </h5>
-
-                              <h4 *ngIf="product.promotion == false" class="h4 mb-0 text-dark product-price font-weight-bold" >
+                            </h5>
+    
+                            <h4 *ngIf="product.promotion == false" class="h4 mb-0 text-dark product-price font-weight-bold">
                                 {{ product.prix }} DT
-                              </h4>
-                              <h4 *ngIf="product.promotion == true" class="h4 mb-0 product-price-promo font-weight-bold" style="color: #eca841;">
-                                {{ product.promoprix }} DT
-                              </h4>                        </div>
+                            </h4>
+    
+                           
+    
+                          
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    
     
     
 </section>

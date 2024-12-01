@@ -24,7 +24,7 @@ export class ShopComponent implements OnInit {
 
 
   getProductsNoPromo() {
-    this.productservice.getProducts().subscribe(
+    this.productservice.getProductsNoPromo().subscribe(
       prods => {
         console.log(prods);
         this.allproducts = prods; 

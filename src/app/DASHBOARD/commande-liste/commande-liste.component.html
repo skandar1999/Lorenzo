@@ -12,7 +12,7 @@
         
             
             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-gift me-2"></i>Commande</a>
+                    class="fas fa-gift me-2"></i>Commande list</a>
   
             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                     class="fas fa-comment-dots me-2"></i>Chat</a>
@@ -52,7 +52,87 @@
         </nav>
   
         <div class="container-fluid px-1">
+            <section class="text-center"> 
+              <div class="p-5 bg-image" style="height: 150px;"></div>
             
-     
-
-            
+              <div class="card mx-4 mx-md-5 shadow-5-strong" style="margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);">
+                <div class="card-body py-5 px-md-5">
+                  <div class="row mt-1"> 
+                    <h3 class="fs-4 mb-3">Recent Commandes</h3>
+                    <div class="col">
+                      <table class="table bg-white rounded shadow-sm table-hover">
+                        <thead class="bg-light">
+                          <tr>
+                            <th>User Name</th>
+                            <th>User Last Name</th>
+                            <th>User Telephone</th>
+                            <th>User Region</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let commande of commandes">
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                  <p class="fw-bold mb-1">{{ commande.userName }}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <p class="fw-normal mb-1">{{ commande.userLastName }}</p>
+                            </td>
+                            <td>
+                              <p class="fw-normal mb-1">{{ commande.UserTelephone }}</p>
+                            </td>
+                            <td>
+                              <p class="fw-normal mb-1">{{ commande.UserRegion }}</p>
+                            </td>
+                            <td>
+                              <p class="fw-normal mb-1">{{ commande.createdAt | date: 'short' }}</p>
+                            </td>
+                            <td class="d-flex gap-2">
+                              <!-- Confirmed Indicator -->
+                              <button 
+                                type="button" 
+                                class="btn btn-sm btn-rounded status-button" 
+                                [ngClass]="{
+                                  'btn-success': commande.isConfirmed,
+                                  'btn-outline-secondary': !commande.isConfirmed
+                                }"
+                                [disabled]="commande.isConfirmed"
+                                [attr.title]="commande.isConfirmed ? 'Confirmed' : 'Not Confirmed'"
+                                (click)="confirmCommande(commande._id)"
+                              >
+                                <span *ngIf="commande.isConfirmed">&#10004;</span> <!-- Checkmark -->
+                                <span *ngIf="!commande.isConfirmed">&#9675;</span> <!-- Empty circle -->
+                              </button>
+                            
+                              <!-- Completed Indicator -->
+                              <button 
+                                type="button" 
+                                class="btn btn-sm btn-rounded status-button" 
+                                [ngClass]="{
+                                  'btn-success': commande.isCompleted,
+                                  'btn-outline-secondary': !commande.isCompleted
+                                }"
+                                [disabled]="commande.isCompleted"
+                                [attr.title]="commande.isCompleted ? 'Completed' : 'Not Completed'"
+                                (click)="completedCommande(commande._id)"
+                              >
+                                <span *ngIf="commande.isCompleted">&#10004;</span> <!-- Checkmark -->
+                                <span *ngIf="!commande.isCompleted">&#9675;</span> <!-- Empty circle -->
+                              </button>
+                            </td>
+                            
+                          </tr>
+                        </tbody>
+                      </table> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private productservice :ProductsService) { }
 
   ngOnInit(): void {
-    this.getFiles(); // Call the method to fetch products on component initialization
+    this.getFiles(); 
 
   }
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     this.productservice.getProducts().subscribe(
       prods => {
         console.log(prods);
-        this.allproducts = prods; // Assign the products array directly
+        this.allproducts = prods; 
       },
       error => {
         console.error(error);

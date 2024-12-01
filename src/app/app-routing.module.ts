@@ -18,6 +18,7 @@ import { DashboardHomeComponent } from './DASHBOARD/dashboard-home/dashboard-hom
 import { AdminGuard } from './guards/admin.guard';
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-liste.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
 
@@ -31,9 +32,9 @@ const routes: Routes = [
 
   { path: 'shop', component: ShopComponent },
   { path: 'products/:id', component: ProductshopComponent },
-  { path: 'addproduct', component: AddproductComponent },
-  { path: 'dashboard', component: DashboardHomeComponent,canActivate: [AdminGuard]   },
-  { path: 'commandePage', component: CommandeListeComponent },
+  { path: 'addproduct', component: AddproductComponent,canActivate: [AdminGuard]  },
+  { path: 'dashboard', component: DashboardHomeComponent, canActivate: [AdminGuard]   },
+  { path: 'commandePage', component: CommandeListeComponent, canActivate: [AdminGuard]  },
 
   { path: 'pololiste', component: POLOlistComponent },
   { path: 'chemiselist', component: CHEMISElistComponent },
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'app-forbidden', component: AppForbiddenComponent },
   
   { path: 'promotion', component: PromotionComponent },
-  { path: 'basket', component:  CartComponentComponent}
+  { path: 'basket', component:  CartComponentComponent},
+  { path: 'contact', component:  ContactComponent}
 
 
 ];  

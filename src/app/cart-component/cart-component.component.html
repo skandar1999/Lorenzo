@@ -60,7 +60,7 @@
 
       <!-- *ngIf="cartItems.length > 0" -->
     
-      <button class="PlaceOrder" (click)="openConfirmDialog()" >Place Order</button>
+      <button class="PlaceOrder" (click)="openConfirmDialog()" *ngIf="cartItems.length > 0 ">Place Order</button>
 
   
   </div>

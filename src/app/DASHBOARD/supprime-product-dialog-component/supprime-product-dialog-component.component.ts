@@ -16,8 +16,7 @@ export class SupprimeProductDialogComponentComponent implements OnInit {
 
 
   confirmChanges(): void {
-    // Process and validate the changes made in the dialog
-    // Emit the result when the user confirms
+   
     this.onClose.emit(true);
     this.bsModalRef.hide();
   }

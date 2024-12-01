@@ -31,6 +31,7 @@ import { SupprimeProductDialogComponentComponent } from './DASHBOARD/supprime-pr
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { CommandeFormulaireComponent } from './commande-formulaire/commande-formulaire.component';
 import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-liste.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-list
     CartComponentComponent,
     CommandeFormulaireComponent,
     CommandeListeComponent,
+    ContactComponent,
     
   ],
 

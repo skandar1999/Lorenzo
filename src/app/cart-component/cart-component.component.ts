@@ -30,14 +30,13 @@ export class CartComponentComponent implements OnInit {
 
   calculateTotalAmount() {
     this.totalAmount = this.cartItems.reduce((total, item) => {
-      // If the item has a promotion, add its promoprix, otherwise add its prix
       return total + (item.promotion ? item.promoprix : item.prix);
     }, 0);
   }
   
 
   getProductImageUrl(image: string): string {
-    return `http://localhost:3000/uploads/${image}`; // Adjust the URL as needed
+    return `http://localhost:3000/uploads/${image}`; 
   } 
 
   removeItemFromCart(item: Product) {
@@ -47,7 +46,7 @@ export class CartComponentComponent implements OnInit {
 
 
   openConfirmDialog(): void {
-    const selectedProductIds = this.cartItems.map((item) => item._id); // Assuming _id is the product ID
+    const selectedProductIds = this.cartItems.map((item) => item._id);
 
     this.bsModalRef = this.modalService.show(CommandeFormulaireComponent, {
       initialState: {

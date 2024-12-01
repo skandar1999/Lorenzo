@@ -149,54 +149,137 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
+/* Style for the form group */
+.form-group {
+  margin-bottom: 1.5rem;
+}
 
-  /* Style for the input group to keep elements on the same line */
+/* Style for the input group to keep elements on the same line */
 .input-group {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-.form-outline.d-flex.align-items-center {
+/* Style for the input fields */
+.input-group input {
+  flex: 1; /* Make the input take available space */
+  padding-right: 40px; /* Space for the eye icon */
+}
+
+/* Style for the eye icon */
+.input-group .input-group-append {
   display: flex;
   align-items: center;
-}
-
-/* Style for the toggle icon */
-.toggle-password {
+  justify-content: center;
   cursor: pointer;
 }
 
-.logout-link {
+.input-group .input-group-append .toggle-password {
+  font-size: 1.1rem; /* Adjust icon size */
+  color: #6c757d; /* Default icon color */
+  margin-left: 0px;
+  border-radius: 0px;
+  padding: 9px;
+}
+
+
+
+.input-group .input-group-append .toggle-password:hover {
+  color: #515253; /* Change color when hovered */
+}
+
+/* Highlight the input field with a red border if there is an error */
+.input-group input.text-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* Container for the user section */
+.user-section {
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Style for the user image */
+.user-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+}
+
+/* Hover effect for the image section */
+.image-section:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+/* Styling for logout and dashboard links */
+.logout-link, .dashboard-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the left */
+  padding: 0.5rem 4.8rem;
+  margin-top: 0.5rem;
+  background-color: #eaecee;
+  border: 1px solid #000000; /* Clean border for a professional look */
+  color: #000000;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px; /* Slight border-radius for a soft look */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+/* Icon styles for the logout and dashboard links */
+.logout-link i, .dashboard-link i {
+  margin-right: 8px;
+}
+
+/* Hover effect for the logout and dashboard links */
+.logout-link:hover, .dashboard-link:hover {
+  background-color: #eca841; /* Darker shade for hover */
+  color: #ffffff; /* White text on hover */
+  transform: translateY(-1px); /* Slight lift effect */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow on hover */
+}
+
+/* Focus effect for accessibility */
+.logout-link:focus, .dashboard-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+/* Optional: Add a subtle padding around the user section */
+.user-section {
+  padding: 1rem;
+  text-align: left;
+}
+
+.file-input-label {
+  font-size: 0.8rem;
+  color: #007bff;
+  cursor: pointer;
   display: block;
   margin-top: 1rem;
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s;
 }
 
-.logout-link i {
-  margin-right: 0.5rem;
-}
-
-.logout-link:hover {
-  color: #555;
-}
-
-
-
-
-.user-details {
-  margin-top: 20px;
-  background-color: #faf8f8;
-  padding: 20px;
-}
-
-.detail-item {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.detail-item:last-child {
-  margin-bottom: 0;
+/* File input wrapper to hide the file input */
+.file-input-wrapper input {
+  display: none;
 }
