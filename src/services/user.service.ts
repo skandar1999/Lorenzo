@@ -13,6 +13,7 @@ import { User } from 'src/app/footer/models/user';
 export class UserService {
   private apiURL = 'http://127.0.0.1:3000/user/register';
   private baseUrl = 'http://127.0.0.1:3000/user';
+  private baseMessageUrl = 'http://127.0.0.1:3000/contact';  
 
   constructor(private http: HttpClient) {}
 
@@ -42,9 +43,6 @@ export class UserService {
   }
 
 
-
-
-
   updateUserData(userId: string, newUser: any): Observable<any> {
     const url = `${this.baseUrl}/updateuserdata/${userId}`;
     return this.http.put(url, newUser);
@@ -60,4 +58,19 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/countUsers`);
   }
   
+
+  getCountOfMessages(): Observable<any> {
+    return this.http.get(`${this.baseMessageUrl}/countMessages`);
+  }
+
+  
+  updateRoleUser(id: string): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/UpdateRole/${id}`, {});
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/getall`);
+  }
+
+
 }

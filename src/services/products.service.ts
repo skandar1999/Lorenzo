@@ -75,6 +75,8 @@ export class ProductsService {
     return this.http.get(`${this.baseResevationUrl}/countReservation`);
   }
 
+
+  
   reserveProducts(requestData: any): Observable<any> {
     const url = `${this.baseResevationUrl}/reserveproducts`;
     return this.http.post(url, requestData);
@@ -92,4 +94,13 @@ export class ProductsService {
   completedCommande(id: string): Observable<any> {
     return this.http.put(`${this.baseResevationUrl}/completeCommande/${id}`, {});
   }
+
+
+  
+  updateDisponibleStatus(productId: string): Observable<any> {
+    const url = `http://127.0.0.1:3000/product/UpdateDisponibleProduct/${productId}`;
+    return this.http.put(url, {}); // Pass any required payload
+  }
+  
+  
 }

@@ -14,8 +14,8 @@
             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                     class="fas fa-gift me-2"></i>Commande list</a>
   
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                    class="fas fa-comment-dots me-2"></i>Chat</a>
+             <a routerLink="/chatlist" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                      class="fas fa-comment-dots me-2"></i>Chat</a>
             
             <a href="/login" (click)="onLogout()" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                     class="fas fa-power-off me-2"></i>Logout</a>
@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
             <div class="d-flex align-items-center">
                 <i class="fas fa-align-left primary-text fs-4 me-3"  id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Dashboard</h2>
+                <h2 class="fs-2 m-0">Commande list</h2>
             </div>
   
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -55,84 +55,81 @@
             <section class="text-center"> 
               <div class="p-5 bg-image" style="height: 150px;"></div>
             
-              <div class="card mx-4 mx-md-5 shadow-5-strong" style="margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);">
-                <div class="card-body py-5 px-md-5">
-                  <div class="row mt-1"> 
-                    <h3 class="fs-4 mb-3">Recent Commandes</h3>
-                    <div class="col">
-                      <table class="table bg-white rounded shadow-sm table-hover">
-                        <thead class="bg-light">
-                          <tr>
-                            <th>User Name</th>
-                            <th>User Last Name</th>
-                            <th>User Telephone</th>
-                            <th>User Region</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let commande of commandes">
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ commande.userName }}</p>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="fw-normal mb-1">{{ commande.userLastName }}</p>
-                            </td>
-                            <td>
-                              <p class="fw-normal mb-1">{{ commande.UserTelephone }}</p>
-                            </td>
-                            <td>
-                              <p class="fw-normal mb-1">{{ commande.UserRegion }}</p>
-                            </td>
-                            <td>
-                              <p class="fw-normal mb-1">{{ commande.createdAt | date: 'short' }}</p>
-                            </td>
-                            <td class="d-flex gap-2">
-                              <!-- Confirmed Indicator -->
-                              <button 
-                                type="button" 
-                                class="btn btn-sm btn-rounded status-button" 
-                                [ngClass]="{
-                                  'btn-success': commande.isConfirmed,
-                                  'btn-outline-secondary': !commande.isConfirmed
-                                }"
-                                [disabled]="commande.isConfirmed"
-                                [attr.title]="commande.isConfirmed ? 'Confirmed' : 'Not Confirmed'"
-                                (click)="confirmCommande(commande._id)"
-                              >
-                                <span *ngIf="commande.isConfirmed">&#10004;</span> <!-- Checkmark -->
-                                <span *ngIf="!commande.isConfirmed">&#9675;</span> <!-- Empty circle -->
-                              </button>
-                            
-                              <!-- Completed Indicator -->
-                              <button 
-                                type="button" 
-                                class="btn btn-sm btn-rounded status-button" 
-                                [ngClass]="{
-                                  'btn-success': commande.isCompleted,
-                                  'btn-outline-secondary': !commande.isCompleted
-                                }"
-                                [disabled]="commande.isCompleted"
-                                [attr.title]="commande.isCompleted ? 'Completed' : 'Not Completed'"
-                                (click)="completedCommande(commande._id)"
-                              >
-                                <span *ngIf="commande.isCompleted">&#10004;</span> <!-- Checkmark -->
-                                <span *ngIf="!commande.isCompleted">&#9675;</span> <!-- Empty circle -->
-                              </button>
-                            </td>
-                            
-                          </tr>
-                        </tbody>
-                      </table> 
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div
+  class="card mx-4 mx-md-5 shadow-5-strong"
+  style="margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);"
+>
+  <div class="card-body py-5 px-md-5">
+    <div class="container mt-4">
+      <h3 class="fs-4 mb-3">Reservations List</h3>
+      <div class="container mt-4">
+        <div *ngFor="let group of groupedCommandes">
+          <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between">
+              <h3>{{ group.userName }} {{ group.userLastName }}</h3>
+              <span>{{ group.userRegion }}</span> <!-- Displaying user region -->
+            </div>
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Created At</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let reservation of group.reservations">
+                    <td>{{ reservation.productName }}</td>
+                    <td>{{ reservation.createdAt | date: 'short' }}</td>
+                    <td>
+                      <span
+                        [ngClass]="{
+                          'text-success': reservation.isCompleted,
+                          'text-warning': !reservation.isCompleted
+                        }"
+                      >
+                        {{ reservation.isCompleted ? 'Completed' : 'Pending' }}
+                      </span>
+                    </td>
+                    <td>
+                      <!-- Action Buttons -->
+                      <button
+                        class="btn btn-sm btn-outline-success"
+                        *ngIf="!reservation.isConfirmed"
+                        (click)="confirmCommande(reservation._id)"
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-primary"
+                        *ngIf="!reservation.isCompleted"
+                        (click)="completedCommande(reservation._id)"
+                      >
+                        Complete
+                      </button>
+                      <button
+                      class="btn btn-sm btn-outline-danger"
+                      *ngIf="!reservation.disponible && !reservation.isCompleted"
+                      (click)="updateDisponibleStatus(reservation._id)"
+                    >
+                      Mark as Available
+                    </button>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+              
             </section>
           </div>
           

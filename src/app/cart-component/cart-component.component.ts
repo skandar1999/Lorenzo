@@ -15,16 +15,16 @@ export class CartComponentComponent implements OnInit {
   totalAmount: number = 0; 
   bsModalRef: any;
 
-  constructor(private cartService: CartService ,
-    private productService : ProductsService ,
-    private modalService: BsModalService,
-    ) {}
+  constructor(
+    private cartService: CartService,
+    private productService: ProductsService,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit() {
     this.cartService.getCartItems().subscribe((items) => {
       this.cartItems = items;
       this.calculateTotalAmount();
-
     });
   }
 
@@ -33,17 +33,16 @@ export class CartComponentComponent implements OnInit {
       return total + (item.promotion ? item.promoprix : item.prix);
     }, 0);
   }
-  
 
   getProductImageUrl(image: string): string {
     return `http://localhost:3000/uploads/${image}`; 
   } 
 
-  removeItemFromCart(item: Product) {
-    this.cartService.removeItemFromCart(item);
+  removeFromCart(item: Product) {
+    this.cartService.removeItemFromCart(item._id); // Ensure you're passing _id to remove
   }
   
-
+  
 
   openConfirmDialog(): void {
     const selectedProductIds = this.cartItems.map((item) => item._id);
@@ -53,8 +52,5 @@ export class CartComponentComponent implements OnInit {
         productIds: selectedProductIds,
       },
     });
-    
   }
-  
-
 }

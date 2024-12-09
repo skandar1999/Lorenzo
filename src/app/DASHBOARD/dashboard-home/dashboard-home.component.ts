@@ -24,6 +24,8 @@ export class DashboardHomeComponent implements OnInit {
   productCount!: number;
   countReservation!: number;
   countUsers!: number;
+  countMessages !: number;
+
   status = false;
   addToggle()
   {
@@ -53,6 +55,11 @@ export class DashboardHomeComponent implements OnInit {
       this.countUsers = data.Count;
     });
 
+    this.userService.getCountOfMessages().subscribe((data: any) => {
+      this.countMessages = data.Count;
+    });
+
+    
   }
 
   onLogout() {

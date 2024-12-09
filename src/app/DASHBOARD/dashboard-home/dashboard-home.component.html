@@ -7,15 +7,17 @@
         <a routerLink="/addproduct" class="list-group-item list-group-item-action bg-transparent second-text active"><i
             class="fas fa-tachometer-alt me-2"></i>Add Product</a>
  
-    <a routerLink="/listeallproducts" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+           <a routerLink="/listeallproducts" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
             class="fas fa-chart-line me-2"></i>Liste Product</a>
       
           
           <a routerLink="/commandePage" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                   class="fas fa-gift me-2"></i>commande list</a>
 
-          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                  class="fas fa-comment-dots me-2"></i>Chat</a>
+                  <a routerLink="/chatlist" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                    class="fas fa-comment-dots me-2"></i>Chat</a>
+
+                 
           
           <a href="/login" (click)="onLogout()" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                   class="fas fa-power-off me-2"></i>Logout</a>
@@ -28,7 +30,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
           <div class="d-flex align-items-center">
               <i class="fas fa-align-left primary-text fs-4 me-3" (click)="addToggle()" id="menu-toggle"></i>
-              <h2 class="fs-2 m-0">Dashboard</h2>
+              <h2 class="fs-2 m-0">Products List</h2>
           </div>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -87,10 +89,10 @@
               <div class="col-md-3">
                   <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                       <div>
-                          <h3 class="fs-2">%25</h3>
-                          <p class="fs-5">Increase</p>
+                          <h3 class="fs-2">{{ countMessages }}</h3>
+                          <p class="fs-5">Messages</p>
                       </div>
-                      <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                      <i class="fas fa-envelope fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                   </div>
               </div>
           </div>

@@ -19,6 +19,9 @@ import { AdminGuard } from './guards/admin.guard';
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-liste.component';
 import { ContactComponent } from './contact/contact.component';
+import { ChatlistComponent } from './DASHBOARD/chatlist/chatlist.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UsersListeComponent } from './users-liste/users-liste.component';
 
 const routes: Routes = [
 
@@ -44,7 +47,10 @@ const routes: Routes = [
   
   { path: 'promotion', component: PromotionComponent },
   { path: 'basket', component:  CartComponentComponent},
-  { path: 'contact', component:  ContactComponent}
+  { path: 'contact', component:  ContactComponent},
+  { path: 'chatlist', component:  ChatlistComponent},
+  // { path: 'userlist', component:  UsersListComponent},
+  { path: 'userliste', component:  UsersListeComponent}
 
 
 ];  

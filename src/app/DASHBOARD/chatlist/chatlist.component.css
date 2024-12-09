@@ -101,29 +101,59 @@
     }
   }
 
-.btn-sm {
- 
-  margin-left: 5px;
+  /* Circular Button Styling */
+.btn-rounded {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Optional: Style for Disabled Buttons */
+.status-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 
-.card {
-  border-radius: 2px;
+/* Circular Button Styling */
+.btn-rounded {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card-header {
-  background-color: #f4f4f5;
-  font-weight: bold;
+/* Green Button for "seem: true" */
+.btn-success {
+  background-color: #28a745; /* Green */
+  color: white;
 }
 
-.table-hover tbody tr:hover {
-  background-color: #f1f1f1;
+/* Gray Button for "seem: false" */
+.btn-outline-secondary {
+  background-color: #f8f9fa; /* Light gray */
+  color: #6c757d; /* Gray text */
+  border: 1px solid #6c757d; /* Border */
 }
 
-.text-success {
-  color: #28a745 !important;
+/* Hover Effect */
+.status-button:hover {
+  opacity: 0.8;
 }
 
-.text-warning {
-  color: #ffc107 !important;
+/* Optional: Style for Disabled Buttons */
+.status-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }

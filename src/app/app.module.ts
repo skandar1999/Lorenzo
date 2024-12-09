@@ -32,6 +32,9 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
 import { CommandeFormulaireComponent } from './commande-formulaire/commande-formulaire.component';
 import { CommandeListeComponent } from './DASHBOARD/commande-liste/commande-liste.component';
 import { ContactComponent } from './contact/contact.component';
+import { ChatlistComponent } from './DASHBOARD/chatlist/chatlist.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UsersListeComponent } from './users-liste/users-liste.component';
 
 
 @NgModule({
@@ -59,6 +62,9 @@ import { ContactComponent } from './contact/contact.component';
     CommandeFormulaireComponent,
     CommandeListeComponent,
     ContactComponent,
+    ChatlistComponent,
+    UsersListComponent,
+    UsersListeComponent,
     
   ],
 

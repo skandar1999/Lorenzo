@@ -1,6 +1,6 @@
 export class Product {
-    id!:number;
-    name!:string;
+  _id!: string; // Change 'id' to '_id'
+  name!:string;
     prix!:string;
     promoprix!:string;
     description!: string;
